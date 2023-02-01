@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223451023631",
+    "project_id": "albaraka-management",
+    "storage_bucket": "albaraka-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223451023631:android:e7baf718cd22c02fd9167a",
+        "android_client_info": {
+          "package_name": "com.example.albaraka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223451023631-pkb3ida2v7sejgvsc7jgbqqnhmq0aibi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.albaraka",
+            "certificate_hash": "7240c217d2a2e7b0e055a34d853c4210b6f53ba5"
+          }
+        },
+        {
+          "client_id": "223451023631-ved0vn1dsmh30d52dicftnqu8m6blgtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPk2QKFBp-jleO5tPenNyzs2_nIwVy2Do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223451023631-ved0vn1dsmh30d52dicftnqu8m6blgtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
