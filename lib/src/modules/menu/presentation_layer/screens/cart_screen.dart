@@ -58,7 +58,6 @@ class CartScreen extends StatelessWidget {
                                         TextButton(
                                             onPressed: () {
                                               bloc.add(DeleteProductFromCartEvent());
-                                              bloc.selectProducts.clear();
                                               Navigator.pop(context);
                                             },
                                             child: const Text("إزالة")),

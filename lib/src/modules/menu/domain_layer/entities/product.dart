@@ -7,7 +7,6 @@ class Product extends Equatable {
   final String name;
   String? imagePaths;
   int? number;
-  bool? isEditAddToCart = false;
   final String describe;
   final double oldPrice;
   final double points;
@@ -17,12 +16,11 @@ class Product extends Equatable {
       required this.name,
       this.imagePaths,
       this.number,
-      this.isEditAddToCart,
       required this.describe,
       required this.newPrice,
       required this.points,
       required this.oldPrice});
 
   @override
-  List<Object?> get props => [image, name,imagePaths,number, describe,newPrice,points, oldPrice];
+  List<Object?> get props => [image, name,imagePaths,describe ,newPrice,points, oldPrice];
 }

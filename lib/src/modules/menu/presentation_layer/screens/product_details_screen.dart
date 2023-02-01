@@ -20,7 +20,6 @@ class ProductDetails extends StatelessWidget {
     }else {
       bloc.number = 1;
     }
-    product.isEditAddToCart ??= false;
     return BlocBuilder<MenuBloc, MenuState>(
       builder: (context, state) {
         return SafeArea(
@@ -93,12 +92,10 @@ class ProductDetails extends StatelessWidget {
                     SizedBox(
                       height: 20.sp,
                     ),
-                    product.isEditAddToCart! ?
+                    bloc.cartItems.contains(product)?
                     TextButton(
                       onPressed: (){
-                        print("${product.isEditAddToCart!}     ${product.name}");
                         bloc.add(EditAddProductToCartEvent(product: product));
-                        print("${product.isEditAddToCart!}     ${product.name}");
                       },
                       child: const Text("تم الإضافة الى سلة المشتريات هل تريد التعديل ؟"),
                     ) :
@@ -136,9 +133,7 @@ class ProductDetails extends StatelessWidget {
                           width: double.infinity,
                           child: MaterialButton(
                             onPressed: () {
-                              if(!bloc.cartItems.contains(product)) {
                                 bloc.add(AddProductToCartEvent(product: product));
-                              }
                             },
                             child: Text(
                               "إضافة الى سلة المشتريات",

@@ -6,7 +6,6 @@ class ProductModel extends Product {
       super.imagePaths,
       required super.newPrice,
       super.number,
-      super.isEditAddToCart,
       required super.describe,
       required super.points,
       required super.oldPrice});

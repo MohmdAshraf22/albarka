@@ -39,18 +39,13 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   void changeSelectProduct() {
     isSelected = !isSelected;
   }
-
-  void changeIsEditAddToCart(ProductModel product) {
-    product.isEditAddToCart = !product.isEditAddToCart!;
-  }
-
   void deleteSelectProduct() {
     selectProducts.forEach((element) {
       cartItems.remove(element);
     });
+    selectProducts.clear();
     isSelected = false;
   }
-
   void determineSelectAllProduct() {
     if (selectProducts.length == cartItems.length) {
       selectProducts.clear();
@@ -108,10 +103,9 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
         changeSelectProduct();
         emit(ChangeIsSelectedState(isSelected));
       } else if (event is AddProductToCartEvent) {
-        event.product.isEditAddToCart = true;
         cartItems.add(event.product);
         event.product.number = number;
-        emit(AddProductToCartState(product: event.product));
+        emit(AddProductToCartState(product: event.product,number: number));
       } else if (event is DeleteProductFromCartEvent) {
         deleteSelectProduct();
         emit(DeleteProductFromCartState());
@@ -129,10 +123,9 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
         number--;
         emit(MinusNumberOfProductState(number: number));
       } else if (event is EditAddProductToCartEvent) {
-        changeIsEditAddToCart(event.product);
         cartItems.remove(event.product);
-        emit(EditAddProductToCartState(isEditAddToCart: event.product.isEditAddToCart!));
+        emit(EditAddProductToCartState(product: event.product));
       }
-    });
+      });
   }
 }

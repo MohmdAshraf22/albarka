@@ -11,7 +11,7 @@ class MenuInitial extends MenuState {
 
 class ChangeTabBarState extends MenuState {
   final int changeTab;
-  ChangeTabBarState(
+  const ChangeTabBarState(
       {required this.changeTab});
   @override
   List<Object?> get props => [changeTab];
@@ -29,7 +29,7 @@ class ChangeIsSelectedState extends MenuState {
   List<Object?> get props => [isSelected];
 }
 class DeleteProductFromCartState extends MenuState {
-  DeleteProductFromCartState();
+  const DeleteProductFromCartState();
   @override
   List<Object?> get props => [];
 }
@@ -98,14 +98,15 @@ class NavagationToProductsDetailsStates extends MenuState {
 }
 class AddProductToCartState extends MenuState {
   final ProductModel product;
-  const AddProductToCartState({required this.product});
+  final int number;
+  const AddProductToCartState({required this.product,required this.number});
   @override
   List<Object?> get props => [product];
 }class EditAddProductToCartState extends MenuState {
-  final bool isEditAddToCart;
-  const EditAddProductToCartState({required this.isEditAddToCart});
+  final ProductModel product;
+  const EditAddProductToCartState({required this.product});
   @override
-  List<Object?> get props => [isEditAddToCart];
+  List<Object?> get props => [product];
 }
 
 class BackToDefaultBeforeSelectState extends MenuState {
@@ -123,13 +124,13 @@ class SelectAllProductStates extends MenuState {
 }
 class PlusNumberOfProductState extends MenuState {
   final int number;
-  PlusNumberOfProductState({required this.number});
+  const PlusNumberOfProductState({required this.number});
   @override
   List<Object?> get props => [number];
 }
 class MinusNumberOfProductState extends MenuState {
   final int number;
-  MinusNumberOfProductState({required this.number});
+  const MinusNumberOfProductState({required this.number});
   @override
   List<Object?> get props => [number];
 }

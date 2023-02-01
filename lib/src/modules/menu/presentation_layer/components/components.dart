@@ -11,11 +11,6 @@ Widget ItemProductGrid(ProductModel product, context, index) {
     builder: (context, state) {
       return InkWell(
         onTap: () {
-          // if(!product.isEditAddToCart!) {
-          //   product.isEditAddToCart = false;
-          // }else {
-          //   product.isEditAddToCart = true;
-          // }
           bloc.add(NavagationToProductsDetailsEvent(
               collectionIndex: bloc.changeTab,
               index: index,

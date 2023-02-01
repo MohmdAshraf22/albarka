@@ -9,11 +9,13 @@ class GetMashweyatEvent extends MenuEvent {
   @override
   List<Object?> get props => [];
 }
+
 class GetKosharyEvent extends MenuEvent {
   const GetKosharyEvent();
   @override
   List<Object?> get props => [];
 }
+
 class GetHalaweyatEvent extends MenuEvent {
   const GetHalaweyatEvent();
   @override
@@ -27,46 +29,53 @@ class NavagationToProductsDetailsEvent extends MenuEvent {
   final int collectionIndex;
 
   const NavagationToProductsDetailsEvent(
-      {required this.context, required this.product, required this.index,required this.collectionIndex});
+      {required this.context,
+      required this.product,
+      required this.index,
+      required this.collectionIndex});
 
   @override
-  List<Object?> get props => [context, product, index,collectionIndex];
+  List<Object?> get props => [context, product, index, collectionIndex];
 }
 
 class ChangeTabBarEvent extends MenuEvent {
   final int changeTab;
-  const ChangeTabBarEvent(
-      {required this.changeTab});
+  const ChangeTabBarEvent({required this.changeTab});
   @override
   List<Object?> get props => [changeTab];
 }
+
 class IsSelectedProductEvent extends MenuEvent {
-  IsSelectedProductEvent();
+  const IsSelectedProductEvent();
   @override
   List<Object?> get props => [];
 }
 
 class ChangeIsSelectedEvent extends MenuEvent {
-  ChangeIsSelectedEvent();
+  const ChangeIsSelectedEvent();
   @override
   List<Object?> get props => [];
 }
+
 class DeleteProductFromCartEvent extends MenuEvent {
-  DeleteProductFromCartEvent();
+  const DeleteProductFromCartEvent();
   @override
   List<Object?> get props => [];
 }
+
 class SelectAllProductEvent extends MenuEvent {
-  SelectAllProductEvent();
+  const SelectAllProductEvent();
   @override
   List<Object?> get props => [];
 }
+
 class AddProductToCartEvent extends MenuEvent {
   final ProductModel product;
   const AddProductToCartEvent({required this.product});
   @override
   List<Object?> get props => [product];
 }
+
 class EditAddProductToCartEvent extends MenuEvent {
   final ProductModel product;
   const EditAddProductToCartEvent({required this.product});
@@ -75,18 +84,19 @@ class EditAddProductToCartEvent extends MenuEvent {
 }
 
 class BackToDefaultBeforeSelectEvent extends MenuEvent {
-  BackToDefaultBeforeSelectEvent();
-  @override
-  List<Object?> get props => [];
-}
-class PlusNumberOfProductEvent extends MenuEvent {
-  PlusNumberOfProductEvent();
-  @override
-  List<Object?> get props => [];
-}
-class MinusNumberOfProductEvent extends MenuEvent {
-  MinusNumberOfProductEvent();
+  const BackToDefaultBeforeSelectEvent();
   @override
   List<Object?> get props => [];
 }
 
+class PlusNumberOfProductEvent extends MenuEvent {
+  const PlusNumberOfProductEvent();
+  @override
+  List<Object?> get props => [];
+}
+
+class MinusNumberOfProductEvent extends MenuEvent {
+  const MinusNumberOfProductEvent();
+  @override
+  List<Object?> get props => [];
+}
