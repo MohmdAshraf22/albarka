@@ -15,9 +15,9 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bloc = MenuBloc.get(context);
-    if(product.number != null) {
+    if (product.number != null) {
       bloc.number = product.number!;
-    }else {
+    } else {
       bloc.number = 1;
     }
     return BlocBuilder<MenuBloc, MenuState>(
@@ -27,7 +27,7 @@ class ProductDetails extends StatelessWidget {
             body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(20.sp),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -92,59 +92,77 @@ class ProductDetails extends StatelessWidget {
                     SizedBox(
                       height: 20.sp,
                     ),
-                    bloc.cartItems.contains(product)?
-                    TextButton(
-                      onPressed: (){
-                        bloc.add(EditAddProductToCartEvent(product: product));
-                      },
-                      child: const Text("تم الإضافة الى سلة المشتريات هل تريد التعديل ؟"),
-                    ) :
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(onPressed: (){
-                              bloc.add(PlusNumberOfProductEvent());
-                            },
-                                icon: Icon(Icons.add_circle,color: ColorManager.primary,size: 28.sp,)),
-                            SizedBox(
-                              width: 10.sp,
-                            ),
-                            Text('${bloc.number}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.sp),),
-                            SizedBox(
-                              width: 10.sp,
-                            ),
-                            IconButton(onPressed: (){
-                              if(bloc.number > 1) {
-                                bloc.add(MinusNumberOfProductEvent());
-                              }
-                            },
-                                icon: Icon(Icons.remove_circle,color: ColorManager.primary,size: 28.sp)),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15.sp,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: ColorManager.primary,
-                              borderRadius: BorderRadius.circular(10)),
-                          width: double.infinity,
-                          child: MaterialButton(
+                    bloc.cartItems.contains(product)
+                        ? TextButton(
                             onPressed: () {
-                                bloc.add(AddProductToCartEvent(product: product));
+                              bloc.add(
+                                  EditAddProductToCartEvent(product: product));
                             },
-                            child: Text(
-                              "إضافة الى سلة المشتريات",
-                              style: TextStyle(
-                                color: ColorManager.white,
+                            child: const Text(
+                                "تم الإضافة الى سلة المشتريات هل تريد التعديل ؟"),
+                          )
+                        : Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        bloc.add(
+                                            const PlusNumberOfProductEvent());
+                                      },
+                                      icon: Icon(
+                                        Icons.add_circle,
+                                        color: ColorManager.primary,
+                                        size: 28.sp,
+                                      )),
+                                  SizedBox(
+                                    width: 10.sp,
+                                  ),
+                                  Text(
+                                    '${bloc.number}',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp),
+                                  ),
+                                  SizedBox(
+                                    width: 10.sp,
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        if (bloc.number > 1) {
+                                          bloc.add(
+                                              const MinusNumberOfProductEvent());
+                                        }
+                                      },
+                                      icon: Icon(Icons.remove_circle,
+                                          color: ColorManager.primary,
+                                          size: 28.sp)),
+                                ],
                               ),
-                            ),
+                              SizedBox(
+                                height: 15.sp,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: ColorManager.primary,
+                                    borderRadius: BorderRadius.circular(10.sp)),
+                                width: double.infinity,
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    bloc.add(AddProductToCartEvent(
+                                        product: product));
+                                  },
+                                  child: Text(
+                                    "إضافة الى سلة المشتريات",
+                                    style: TextStyle(
+                                        color: ColorManager.white,
+                                        fontSize: 15.sp),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    )
                   ],
                 ),
               ),

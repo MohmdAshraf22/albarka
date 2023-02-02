@@ -25,13 +25,11 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
 
   List<ProductModel> cartItems = [];
   List<ProductModel> selectProducts = [];
-
-  String value = "كشري";
   bool selectProduct = false;
   bool isSelected = false;
-  // bool isEdit = false;
   int changeTab = 0;
   int number = 1;
+  double total = 0;
   void changeIsSelected() {
     selectProduct = !selectProduct;
   }
@@ -41,6 +39,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   }
   void deleteSelectProduct() {
     selectProducts.forEach((element) {
+      total -= element.newPrice * element.number!;
       cartItems.remove(element);
     });
     selectProducts.clear();
@@ -89,7 +88,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       } else if (event is NavagationToProductsDetailsEvent) {
         NavigationManager.push(event.context,
             ProductDetails(event.index, event.product, event.collectionIndex));
-        emit(NavagationToProductsDetailsStates(
+        emit(NavigationToProductsDetailsStates(
             index: event.index,
             product: event.product,
             context: event.context));
@@ -108,7 +107,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
         emit(AddProductToCartState(product: event.product,number: number));
       } else if (event is DeleteProductFromCartEvent) {
         deleteSelectProduct();
-        emit(DeleteProductFromCartState());
+        emit(const DeleteProductFromCartState());
       } else if (event is SelectAllProductEvent) {
         determineSelectAllProduct();
         emit(SelectAllProductStates(length: selectProducts.length));
@@ -123,6 +122,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
         number--;
         emit(MinusNumberOfProductState(number: number));
       } else if (event is EditAddProductToCartEvent) {
+        //total -= event.product.newPrice * event.product.number!;
         cartItems.remove(event.product);
         emit(EditAddProductToCartState(product: event.product));
       }

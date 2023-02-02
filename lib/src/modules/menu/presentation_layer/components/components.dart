@@ -85,7 +85,7 @@ Widget ItemCartGrid(ProductModel product, context, index) {
     builder: (context, state) {
       return InkWell(
         onLongPress: () {
-          bloc.add(ChangeIsSelectedEvent());
+          bloc.add(const ChangeIsSelectedEvent());
           if (!bloc.isSelected) {
             bloc.selectProducts.add(product);
           } else {
@@ -98,7 +98,7 @@ Widget ItemCartGrid(ProductModel product, context, index) {
           } else {
             bloc.selectProducts.add(product);
           }
-          bloc.add(IsSelectedProductEvent());
+          bloc.add(const IsSelectedProductEvent());
         },
         child: Card(
           elevation: 7,
@@ -128,11 +128,11 @@ Widget ItemCartGrid(ProductModel product, context, index) {
                             image: product.image == ''
                                 ? null
                                 : DecorationImage(
-                                    image: NetworkImage(
-                                      product.image!,
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
+                              image: NetworkImage(
+                                product.image!,
+                              ),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         Padding(
@@ -164,36 +164,36 @@ Widget ItemCartGrid(ProductModel product, context, index) {
                   ),
                   bloc.isSelected
                       ? IconButton(
-                          onPressed: () {
-                            if (bloc.selectProducts.contains(product)) {
-                              bloc.selectProducts.remove(product);
-                            } else {
-                              bloc.selectProducts.add(product);
-                            }
-                            bloc.add(IsSelectedProductEvent());
-                          },
-                          icon: bloc.selectProducts.contains(product)
-                              ? const Icon(Icons.check_box)
-                              : const Icon(Icons.check_box_outline_blank),
-                        )
+                    onPressed: () {
+                      if (bloc.selectProducts.contains(product)) {
+                        bloc.selectProducts.remove(product);
+                      } else {
+                        bloc.selectProducts.add(product);
+                      }
+                      bloc.add(const IsSelectedProductEvent());
+                    },
+                    icon: bloc.selectProducts.contains(product)
+                        ? const Icon(Icons.check_box)
+                        : const Icon(Icons.check_box_outline_blank),
+                  )
                       : Container(),
                 ],
               ),
-               Container(
-                      decoration: BoxDecoration(
-                        color: ColorManager.primary,
-                        borderRadius: BorderRadius.circular(8)
-                      ),
-                      width: 30.sp,
-                      height: 30.sp,
-                      child: Center(
-                          child: Text(
-                        "${product.number}",
-                        style: TextStyle(
-                            color: ColorManager.white,
-                            fontWeight: FontWeight.bold),
-                      )),
-                    )
+              Container(
+                decoration: BoxDecoration(
+                    color: ColorManager.primary,
+                    borderRadius: BorderRadius.circular(8)
+                ),
+                width: 30.sp,
+                height: 30.sp,
+                child: Center(
+                    child: Text(
+                      "${product.number}",
+                      style: TextStyle(
+                          color: ColorManager.white,
+                          fontWeight: FontWeight.bold),
+                    )),
+              )
             ],
           ),
         ),

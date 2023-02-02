@@ -88,11 +88,11 @@ class GetMashweyatLoadingState extends MenuState {
   List<Object?> get props => [];
 }
 
-class NavagationToProductsDetailsStates extends MenuState {
+class NavigationToProductsDetailsStates extends MenuState {
   final BuildContext context;
   final ProductModel product;
   final int index;
-  const NavagationToProductsDetailsStates({required this.context,required this.product,required this.index});
+  const NavigationToProductsDetailsStates({required this.context,required this.product,required this.index});
   @override
   List<Object?> get props => [context,product,index];
 }
@@ -102,7 +102,8 @@ class AddProductToCartState extends MenuState {
   const AddProductToCartState({required this.product,required this.number});
   @override
   List<Object?> get props => [product];
-}class EditAddProductToCartState extends MenuState {
+}
+class EditAddProductToCartState extends MenuState {
   final ProductModel product;
   const EditAddProductToCartState({required this.product});
   @override
