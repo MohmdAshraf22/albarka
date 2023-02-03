@@ -38,7 +38,7 @@ ThemeData getAppTheme() {
         height: SizeManager.s50.sp,
         colorScheme: ColorScheme.fromSeed(seedColor: ColorManager.primary, background: ColorManager.primary, ),
 
-        shape: const StadiumBorder(),
+        shape:  StadiumBorder(),
         //textTheme: ButtonTextTheme.primary,
       ),
       cardTheme: CardTheme(

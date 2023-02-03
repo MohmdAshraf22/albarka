@@ -7,7 +7,7 @@ import '../bloc/menu_bloc.dart';
 import '../components/components.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+  const CartScreen(): super();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MenuBloc, MenuState>(
@@ -59,14 +59,15 @@ class CartScreen extends StatelessWidget {
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
-                                        child: const Text("الغاء")),
+                                        Widget: Text("الغاء"),
+                                        ),
                                     TextButton(
                                         onPressed: () {
                                           bloc.add(
                                               const DeleteProductFromCartEvent());
                                           Navigator.pop(context);
                                         },
-                                        child: const Text("إزالة")),
+                                        Widget : const Text("إزالة")),
                                   ],
                                 );
                               });
