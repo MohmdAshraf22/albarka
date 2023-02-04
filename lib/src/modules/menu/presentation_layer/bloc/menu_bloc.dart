@@ -39,8 +39,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           halaweyat = r;
           emit(GetHalaweyatSuccessfulState(halaweyat));
         });
-      }
-      else if (event is GetKosharyEvent) {
+      } else if (event is GetKosharyEvent) {
         emit(const GetKosharyLoadingState());
         final result = await GetKosharyUseCase(sl()).get();
         result.fold((l) {
@@ -49,8 +48,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           koshary = r;
           emit(GetKosharySuccessfulState(koshary));
         });
-      }
-      else if (event is GetMashweyatEvent) {
+      } else if (event is GetMashweyatEvent) {
         emit(const GetMashweyatLoadingState());
         final result = await GetMashweyatUseCase(sl()).get();
         result.fold((l) {
@@ -59,40 +57,33 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           mashweyat = r;
           emit(GetMashweyatSuccessfulState(mashweyat));
         });
-      }
-      else if (event is NavagationToProductsDetailsEvent) {
+      } else if (event is NavagationToProductsDetailsEvent) {
         NavigationManager.push(event.context,
             ProductDetails(event.index, event.product, event.collectionIndex));
         emit(NavigationToProductsDetailsStates(
             index: event.index,
             product: event.product,
             context: event.context));
-      }
-      else if (event is ChangeTabBarEvent) {
+      } else if (event is ChangeTabBarEvent) {
         changeTab = event.changeTab;
         emit(ChangeTabBarState(changeTab: changeTab));
-      }
-      else if (event is AddProductToCartEvent) {
+      } else if (event is AddProductToCartEvent) {
         cartItems.add(event.product);
         event.product.number = number;
-        emit(AddProductToCartState(product: event.product,number: number));
-      }
-      else if (event is DeleteProductFromCartEvent) {
+        emit(AddProductToCartState(product: event.product, number: number));
+      } else if (event is DeleteProductFromCartEvent) {
         cartItems.remove(event.product);
         emit(DeleteProductFromCartState(event.product));
-      }
-      else if (event is PlusNumberOfProductEvent) {
+      } else if (event is PlusNumberOfProductEvent) {
         number++;
         emit(PlusNumberOfProductState(number: number));
-      }
-      else if (event is MinusNumberOfProductEvent) {
+      } else if (event is MinusNumberOfProductEvent) {
         number--;
         emit(MinusNumberOfProductState(number: number));
-      }
-      else if (event is EditAddProductToCartEvent) {
+      } else if (event is EditAddProductToCartEvent) {
         cartItems.remove(event.product);
         emit(EditAddProductToCartState(product: event.product));
       }
-      });
+    });
   }
 }

@@ -1,16 +1,25 @@
 import '../../domain_layer/entities/product.dart';
+
 class ProductModel extends Product {
-   ProductModel(
-      { String ? image,
+  ProductModel(
+      {String? image,
       required String name,
-        String? imagePaths,
+      String? imagePaths,
       required double newPrice,
-      int ? number,
+      int? number,
       required String describe,
       required double points,
-      required double oldPrice}) : super(describe: describe , name: name , newPrice: newPrice , oldPrice:  oldPrice ,  points: points ,
-   image: image , imagePaths: imagePaths , number: number) ;
-  factory ProductModel.fromJson(Map <String , dynamic> json) {
+      required double oldPrice})
+      : super(
+            describe: describe,
+            name: name,
+            newPrice: newPrice,
+            oldPrice: oldPrice,
+            points: points,
+            image: image,
+            imagePaths: imagePaths,
+            number: number);
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
         image: json['image'],
         name: json['name'],
@@ -20,15 +29,15 @@ class ProductModel extends Product {
         oldPrice: json['oldPrice'],
         newPrice: json['newPrice']);
   }
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
-      'image' : image,
-      'name' : name,
-      'imagePaths' : imagePaths,
-      'describe' : describe,
-      'oldPrice' : oldPrice,
-      'points' : points,
-      'newPrice' : newPrice,
+      'image': image,
+      'name': name,
+      'imagePaths': imagePaths,
+      'describe': describe,
+      'oldPrice': oldPrice,
+      'points': points,
+      'newPrice': newPrice,
     };
   }
 }

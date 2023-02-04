@@ -7,14 +7,14 @@ import '../bloc/menu_bloc.dart';
 import '../components/components.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen(): super();
+  const CartScreen() : super();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MenuBloc, MenuState>(
       builder: (context, state) {
         var bloc = MenuBloc.get(context);
         double total = 0;
-         bloc.cartItems.forEach((element) {
+        bloc.cartItems.forEach((element) {
           total += element.newPrice * element.number!;
         });
         return Scaffold(
@@ -23,14 +23,15 @@ class CartScreen extends StatelessWidget {
           ),
           body: Column(
             children: [
-
               Expanded(
                 child: ListView.builder(
-                    itemBuilder: (context, index) => itemCartList(bloc.cartItems[index], context, index),
+                    itemBuilder: (context, index) =>
+                        itemCartList(bloc.cartItems[index], context, index),
                     itemCount: bloc.cartItems.length),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.sp,vertical: 10.sp),
+                padding:
+                    EdgeInsets.symmetric(horizontal: 20.sp, vertical: 10.sp),
                 child: Column(
                   children: [
                     Container(
@@ -50,13 +51,14 @@ class CartScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                       // controller: ,
+                        // controller: ,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15.sp)),
                           prefixIcon: const Icon(Icons.discount),
-                          labelText: 'كوبون',),
+                          labelText: 'كوبون',
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -65,15 +67,17 @@ class CartScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("السعر الإجمالي :",style: TextStyle(
-                          fontSize: 15.sp,
-                          color: ColorManager.primary
-                        ),),
+                        Text(
+                          "السعر الإجمالي :",
+                          style: TextStyle(
+                              fontSize: 15.sp, color: ColorManager.primary),
+                        ),
                         const Spacer(),
-                        Text("$total LE",style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold
-                        ),),
+                        Text(
+                          "$total LE",
+                          style: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -83,15 +87,18 @@ class CartScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: ColorManager.primary,
-                          borderRadius: BorderRadius.circular(10.sp),
-                    ),
+                        borderRadius: BorderRadius.circular(10.sp),
+                      ),
                       child: MaterialButton(
-                        onPressed: (){},
-                      child: Text("شراء ",style: TextStyle(
-                          color: ColorManager.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17.sp
-                      ),),),
+                        onPressed: () {},
+                        child: Text(
+                          "شراء ",
+                          style: TextStyle(
+                              color: ColorManager.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17.sp),
+                        ),
+                      ),
                     ),
                   ],
                 ),

@@ -69,7 +69,7 @@ class ProductDetails extends StatelessWidget {
                     SizedBox(
                       height: 20.sp,
                     ),
-                    Text("${product.oldPrice}\$",
+                    Text("${product.oldPrice} LE",
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w800)),
                     SizedBox(
@@ -98,7 +98,7 @@ class ProductDetails extends StatelessWidget {
                               bloc.add(
                                   EditAddProductToCartEvent(product: product));
                             },
-                            Widget: const Text(
+                            child: const Text(
                                 "تم الإضافة الى سلة المشتريات هل تريد التعديل ؟"),
                           )
                         : Column(

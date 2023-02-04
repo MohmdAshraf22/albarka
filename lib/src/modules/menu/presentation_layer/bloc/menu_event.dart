@@ -65,6 +65,7 @@ class EditAddProductToCartEvent extends MenuEvent {
   @override
   List<Object?> get props => [product];
 }
+
 class PlusNumberOfProductEvent extends MenuEvent {
   const PlusNumberOfProductEvent();
   @override
