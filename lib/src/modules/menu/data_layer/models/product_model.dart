@@ -1,14 +1,15 @@
 import '../../domain_layer/entities/product.dart';
 class ProductModel extends Product {
    ProductModel(
-      {super.image,
-      required super.name,
-      super.imagePaths,
-      required super.newPrice,
-      super.number,
-      required super.describe,
-      required super.points,
-      required super.oldPrice});
+      { String ? image,
+      required String name,
+        String? imagePaths,
+      required double newPrice,
+      int ? number,
+      required String describe,
+      required double points,
+      required double oldPrice}) : super(describe: describe , name: name , newPrice: newPrice , oldPrice:  oldPrice ,  points: points ,
+   image: image , imagePaths: imagePaths , number: number) ;
   factory ProductModel.fromJson(Map <String , dynamic> json) {
     return ProductModel(
         image: json['image'],
