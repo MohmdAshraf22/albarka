@@ -122,3 +122,8 @@ class MinusNumberOfProductState extends MenuState {
   @override
   List<Object?> get props => [number];
 }
+class AddOrderState extends MenuState {
+  const AddOrderState();
+  @override
+  List<Object?> get props => [];
+}

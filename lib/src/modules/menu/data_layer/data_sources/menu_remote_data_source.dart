@@ -1,35 +1,28 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-
+import '../models/order_model.dart';
 import '../models/product_model.dart';
 
 abstract class BaseMenuRemoteDataSource {
 
-  Future<Either<Exception, List<ProductModel>>> getKoshary();
-  Future<Either<Exception, List<ProductModel>>> getMashweyat();
-  Future<Either<Exception, List<ProductModel>>> getHalaweyat();
+  Future<Either<FirebaseException, List<ProductModel>>> getKoshary();
+  Future<Either<FirebaseException, List<ProductModel>>> getMashweyat();
+  Future<Either<FirebaseException, List<ProductModel>>> getHalaweyat();
+  Future<Either<FirebaseException,void>>  setOrder({
+    required List<String> productNames,
+    required String address,
+    required double total,
+    required String gift
+  });
 }
 
 class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
-  File? imageFiled;
-  String? uploadImage;
-  String? imagePaths;
-
-  List<String> kosharyId = [];
   List<ProductModel> koshary = [];
-
-  List<String> mashweyatId = [];
   List<ProductModel> mashweyat = [];
-  List<String> halaweyatId = [];
   List<ProductModel> halaweyat = [];
 
   @override
-  Future<Either<Exception, List<ProductModel>>> getKoshary() async {
-    kosharyId = [];
+  Future<Either<FirebaseException, List<ProductModel>>> getKoshary() async {
     koshary = [];
     try {
       await FirebaseFirestore.instance
@@ -38,18 +31,16 @@ class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
           .then((value) {
         value.docs.forEach((element) {
           koshary.add(ProductModel.fromJson(element.data()));
-          kosharyId.add(element.id);
         });
       });
 
       return Right(koshary);
-    } on Exception catch (error) {
+    } on FirebaseException catch (error) {
       return Left(error);
     }
   }
 
-  Future<Either<Exception, List<ProductModel>>> getMashweyat() async {
-    mashweyatId = [];
+  Future<Either<FirebaseException, List<ProductModel>>> getMashweyat() async {
     mashweyat = [];
     try {
       await FirebaseFirestore.instance
@@ -58,18 +49,16 @@ class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
           .then((value) {
         value.docs.forEach((element) {
           mashweyat.add(ProductModel.fromJson(element.data()));
-          mashweyatId.add(element.id);
         });
       });
 
       return Right(mashweyat);
-    } on Exception catch (error) {
+    } on FirebaseException catch (error) {
       return Left(error);
     }
   }
 
-  Future<Either<Exception, List<ProductModel>>> getHalaweyat() async {
-    halaweyatId = [];
+  Future<Either<FirebaseException, List<ProductModel>>> getHalaweyat() async {
     halaweyat = [];
     try {
       await FirebaseFirestore.instance
@@ -78,12 +67,34 @@ class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
           .then((value) {
         value.docs.forEach((element) {
           halaweyat.add(ProductModel.fromJson(element.data()));
-          halaweyatId.add(element.id);
         });
       });
 
       return Right(halaweyat);
-    } on Exception catch (error) {
+    } on FirebaseException catch (error) {
+      return Left(error);
+    }
+  }
+
+  @override
+  Future<Either<FirebaseException,void>> setOrder({
+    required List<String> productNames,
+    required String address,
+    required double total,
+    required String gift
+})async {
+    OrderModel orderModel = OrderModel(
+      productNames: productNames,
+      address: address,
+      gift: gift,
+      total: total,
+    );
+    try {
+      await FirebaseFirestore.instance
+          .collection("order")
+          .doc().set(orderModel.toJson());
+      return const Right(true);
+    }on FirebaseException catch (error) {
       return Left(error);
     }
   }
