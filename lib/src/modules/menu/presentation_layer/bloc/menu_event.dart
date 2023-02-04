@@ -45,28 +45,11 @@ class ChangeTabBarEvent extends MenuEvent {
   List<Object?> get props => [changeTab];
 }
 
-class IsSelectedProductEvent extends MenuEvent {
-  const IsSelectedProductEvent();
-  @override
-  List<Object?> get props => [];
-}
-
-class ChangeIsSelectedEvent extends MenuEvent {
-  const ChangeIsSelectedEvent();
-  @override
-  List<Object?> get props => [];
-}
-
 class DeleteProductFromCartEvent extends MenuEvent {
-  const DeleteProductFromCartEvent();
+  final ProductModel product;
+  const DeleteProductFromCartEvent(this.product);
   @override
-  List<Object?> get props => [];
-}
-
-class SelectAllProductEvent extends MenuEvent {
-  const SelectAllProductEvent();
-  @override
-  List<Object?> get props => [];
+  List<Object?> get props => [product];
 }
 
 class AddProductToCartEvent extends MenuEvent {
@@ -82,13 +65,6 @@ class EditAddProductToCartEvent extends MenuEvent {
   @override
   List<Object?> get props => [product];
 }
-
-class BackToDefaultBeforeSelectEvent extends MenuEvent {
-  const BackToDefaultBeforeSelectEvent();
-  @override
-  List<Object?> get props => [];
-}
-
 class PlusNumberOfProductEvent extends MenuEvent {
   const PlusNumberOfProductEvent();
   @override

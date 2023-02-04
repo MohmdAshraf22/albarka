@@ -19,86 +19,77 @@ class CartScreen extends StatelessWidget {
         });
         return Scaffold(
           appBar: AppBar(
-            leading: bloc.isSelected
-                ? IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      bloc.add(const BackToDefaultBeforeSelectEvent());
-                    },
-                  )
-                : IconButton(
-                    icon: const Icon(Icons.arrow_back_sharp),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      bloc.isSelected = false;
-                    },
-                  ),
-            title: Row(
-              children: [
-                if (!bloc.isSelected) const Text("سلة المشتريات"),
-                if (bloc.isSelected)
-                  Text(
-                      "${bloc.selectProducts.length} / ${bloc.cartItems.length}"),
-                const Spacer(),
-                if (bloc.selectProducts.isNotEmpty && bloc.isSelected)
-                  IconButton(
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return BlocBuilder<MenuBloc, MenuState>(
-                                  builder: (context, state) {
-                                return AlertDialog(
-                                  content: bloc.selectProducts.length > 1
-                                      ? const Text(
-                                          "سيتم إزالة هذه المنتجات من سلة المشتريات ؟")
-                                      : const Text(
-                                          "سيتم إزالة هذا المنتج من سلة المشتريات ؟"),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text("الغاء")),
-                                    TextButton(
-                                        onPressed: () {
-                                          bloc.add(
-                                              const DeleteProductFromCartEvent());
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text("إزالة")),
-                                  ],
-                                );
-                              });
-                            });
-                      },
-                      icon: const Icon(Icons.delete)),
-                if (bloc.isSelected)
-                  IconButton(
-                      onPressed: () {
-                        bloc.add(const SelectAllProductEvent());
-                      },
-                      icon: const Icon(Icons.select_all)),
-              ],
-            ),
+            title: const Text("سلة المشتريات"),
+            // leading: bloc.isSelected
+            //     ? IconButton(
+            //         icon: const Icon(Icons.close),
+            //         onPressed: () {
+            //           bloc.add(const BackToDefaultBeforeSelectEvent());
+            //         },
+            //       )
+            //     : IconButton(
+            //         icon: const Icon(Icons.arrow_back_sharp),
+            //         onPressed: () {
+            //           Navigator.of(context).pop();
+            //           bloc.isSelected = false;
+            //         },
+            //       ),
+            // title: Row(
+            //   children: [
+            //     if (!bloc.isSelected)
+            //     if (bloc.isSelected)
+            //       Text(
+            //           "${bloc.selectProducts.length} / ${bloc.cartItems.length}"),
+            //     const Spacer(),
+            //     if (bloc.selectProducts.isNotEmpty && bloc.isSelected)
+            //       IconButton(
+            //           onPressed: () {
+            //             showDialog(
+            //                 context: context,
+            //                 builder: (BuildContext context) {
+            //                   return BlocBuilder<MenuBloc, MenuState>(
+            //                       builder: (context, state) {
+            //                     return AlertDialog(
+            //                       content: bloc.selectProducts.length > 1
+            //                           ? const Text(
+            //                               "سيتم إزالة هذه المنتجات من سلة المشتريات ؟")
+            //                           : const Text(
+            //                               "سيتم إزالة هذا المنتج من سلة المشتريات ؟"),
+            //                       actions: [
+            //                         TextButton(
+            //                             onPressed: () {
+            //                               Navigator.pop(context);
+            //                             },
+            //                             child: const Text("الغاء")),
+            //                         TextButton(
+            //                             onPressed: () {
+            //                               bloc.add(
+            //                                   const DeleteProductFromCartEvent());
+            //                               Navigator.pop(context);
+            //                             },
+            //                             child: const Text("إزالة")),
+            //                       ],
+            //                     );
+            //                   });
+            //                 });
+            //           },
+            //           icon: const Icon(Icons.delete)),
+            //     if (bloc.isSelected)
+            //       IconButton(
+            //           onPressed: () {
+            //             bloc.add(const SelectAllProductEvent());
+            //           },
+            //           icon: const Icon(Icons.select_all)),
+            //   ],
+            // ),
           ),
           body: Column(
             children: [
+
               Expanded(
-                child: SingleChildScrollView(
-                  child: GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    mainAxisSpacing: 20.sp,
-                    padding: EdgeInsets.all(22.sp),
-                    crossAxisCount: 2,
-                    childAspectRatio: 6.5.sp / 9.0.sp,
-                    crossAxisSpacing: 20.sp,
-                    children: List.generate(bloc.cartItems.length, (index) {
-                      return ItemCartGrid(bloc.cartItems[index], context, index);
-                    }),
-                  ),
-                ),
+                child: ListView.builder(
+                    itemBuilder: (context, index) => itemCartList(bloc.cartItems[index], context, index),
+                    itemCount: bloc.cartItems.length),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.sp,vertical: 10.sp),

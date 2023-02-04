@@ -16,22 +16,11 @@ class ChangeTabBarState extends MenuState {
   @override
   List<Object?> get props => [changeTab];
 }
-class IsSelectedProductState extends MenuState {
-  final bool selectProduct;
-  const IsSelectedProductState({required this.selectProduct});
-  @override
-  List<Object?> get props => [selectProduct];
-}
-class ChangeIsSelectedState extends MenuState {
-  final bool isSelected;
-  const ChangeIsSelectedState(this.isSelected);
-  @override
-  List<Object?> get props => [isSelected];
-}
 class DeleteProductFromCartState extends MenuState {
-  const DeleteProductFromCartState();
+  final ProductModel product;
+  const DeleteProductFromCartState(this.product);
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [product];
 }
 //// Koshary
 class GetKosharyErrorState extends MenuState {
@@ -110,19 +99,6 @@ class EditAddProductToCartState extends MenuState {
   List<Object?> get props => [product];
 }
 
-class BackToDefaultBeforeSelectState extends MenuState {
-  final bool isSelected;
-  const BackToDefaultBeforeSelectState(this.isSelected);
-  @override
-  List<Object?> get props => [isSelected];
-}
-class SelectAllProductStates extends MenuState {
-  final int length;
-
-  const SelectAllProductStates({required this.length});
-  @override
-  List<Object?> get props => [length];
-}
 class PlusNumberOfProductState extends MenuState {
   final int number;
   const PlusNumberOfProductState({required this.number});
