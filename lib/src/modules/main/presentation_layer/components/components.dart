@@ -71,7 +71,7 @@ class Item {
 List<Item> items = [
   Item(title: "المنيو", image: Icons.fastfood),
   Item(title: "سلة المشتريات", image: Icons.shopping_cart_rounded),
-  Item(title: "اطلب ديليفري", image: Icons.motorcycle_rounded),
+  // Item(title: "اطلب ديليفري", image: Icons.motorcycle_rounded),
   Item(title: "العروض", image: Icons.local_offer_rounded),
   Item(title: "تابعنا على الفيس بوك", image: Icons.facebook),
 ];

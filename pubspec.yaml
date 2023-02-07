@@ -43,7 +43,10 @@ dependencies:
   sizer:
   device_preview:
   dartz:
+  url_launcher:
   contained_tab_bar_view:
+  google_maps_flutter:
+  location:
   # bloc
   bloc:
   flutter_bloc:

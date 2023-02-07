@@ -11,7 +11,7 @@ Widget ItemProductGrid(ProductModel product, context, index) {
     builder: (context, state) {
       return InkWell(
         onTap: () {
-          bloc.add(NavagationToProductsDetailsEvent(
+          bloc.add(NavigationToProductsDetailsEvent(
               collectionIndex: bloc.changeTab,
               index: index,
               product: product,

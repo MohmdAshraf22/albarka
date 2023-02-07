@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:albaraka/src/modules/authenticaion/presentation_layer/components/components.dart';
+import 'package:albaraka/src/modules/delivery/presentation_layer/screens/delivery_screen.dart';
+import 'package:albaraka/src/modules/menu/presentation_layer/screens/cart_screen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
@@ -38,8 +41,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           halaweyat = r;
           emit(GetHalaweyatSuccessfulState(halaweyat));
         });
-      }
-      else if (event is GetKosharyEvent) {
+      } else if (event is GetKosharyEvent) {
         emit(const GetKosharyLoadingState());
         final result = await GetKosharyUseCase(sl()).get();
         result.fold((l) {
@@ -48,8 +50,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           koshary = r;
           emit(GetKosharySuccessfulState(koshary));
         });
-      }
-      else if (event is GetMashweyatEvent) {
+      } else if (event is GetMashweyatEvent) {
         emit(const GetMashweyatLoadingState());
         final result = await GetMashweyatUseCase(sl()).get();
         result.fold((l) {
@@ -58,47 +59,48 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           mashweyat = r;
           emit(GetMashweyatSuccessfulState(mashweyat));
         });
-      }
-      else if (event is NavagationToProductsDetailsEvent) {
+      } else if (event is NavigationToProductsDetailsEvent) {
         NavigationManager.push(event.context,
             ProductDetails(event.index, event.product, event.collectionIndex));
         emit(NavigationToProductsDetailsStates(
             index: event.index,
             product: event.product,
             context: event.context));
-      }
-      else if (event is ChangeTabBarEvent) {
+      } else if (event is ChangeTabBarEvent) {
         changeTab = event.changeTab;
         emit(ChangeTabBarState(changeTab: changeTab));
-      }
-      else if (event is AddProductToCartEvent) {
+      } else if (event is AddProductToCartEvent) {
         cartItems.add(event.product);
         event.product.number = number;
         emit(AddProductToCartState(product: event.product, number: number));
-      }
-      else if (event is DeleteProductFromCartEvent) {
+      } else if (event is DeleteProductFromCartEvent) {
         cartItems.remove(event.product);
         emit(DeleteProductFromCartState(event.product));
-      }
-      else if (event is PlusNumberOfProductEvent) {
+      } else if (event is PlusNumberOfProductEvent) {
         number++;
         emit(PlusNumberOfProductState(number: number));
-      }
-      else if (event is MinusNumberOfProductEvent) {
+      } else if (event is MinusNumberOfProductEvent) {
         number--;
         emit(MinusNumberOfProductState(number: number));
-      }
-      else if (event is EditAddProductToCartEvent) {
+      } else if (event is EditAddProductToCartEvent) {
         cartItems.remove(event.product);
         emit(EditAddProductToCartState(product: event.product));
       }
-      else if (event is AddOrderEvent) {
-        final result = await SetOrderUseCase(sl()).
-        set(productNames: event.productNames,
-            address: event.address,
-            total: event.total,
-            gift: event.gift);
-        emit(const AddOrderState());
+      else if (event is NavigationToDeliveryScreenEvent) {
+        if (event.productNames.isNotEmpty) {
+          NavigationManager.push(event.context, DeliveryScreen(
+                productNames: event.productNames,
+                total: event.total,
+              ));
+          emit(NavigationToDeliveryScreenState(context: event.context));
+        } else {
+          errorToast(msg: "لم يتم اختيار اي منتج لشراءه ");
+          emit(const NavigationToDeliveryScreenErrorState());
+        }
+      }
+      else if (event is NavigationToCartEvent) {
+        NavigationManager.push(event.context, const CartScreen());
+        emit(NavigationToCartState(context:event.context));
       }
     });
   }

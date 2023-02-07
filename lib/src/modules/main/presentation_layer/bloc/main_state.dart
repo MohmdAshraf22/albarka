@@ -15,3 +15,10 @@ class ChangeGridMainState extends MainState {
   @override
   List<Object?> get props => [index];
 }
+class LogOutState extends MainState {
+  final BuildContext context;
+
+  LogOutState({required this.context});
+  @override
+  List<Object?> get props => [context];
+}

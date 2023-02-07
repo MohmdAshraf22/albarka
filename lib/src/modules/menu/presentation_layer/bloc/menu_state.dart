@@ -122,8 +122,26 @@ class MinusNumberOfProductState extends MenuState {
   @override
   List<Object?> get props => [number];
 }
-class AddOrderState extends MenuState {
-  const AddOrderState();
+// class AddOrderSuccessState extends MenuState {
+//   const AddOrderSuccessState();
+//   @override
+//   List<Object?> get props => [];
+// }
+class NavigationToDeliveryScreenState extends MenuState {
+  final BuildContext context;
+  const NavigationToDeliveryScreenState({required this.context});
+  @override
+  List<Object?> get props => [context];
+}
+class NavigationToDeliveryScreenErrorState extends MenuState {
+  const NavigationToDeliveryScreenErrorState();
   @override
   List<Object?> get props => [];
+}
+
+class NavigationToCartState extends MenuState {
+  final BuildContext context;
+  const NavigationToCartState({required this.context});
+  @override
+  List<Object?> get props => [context];
 }

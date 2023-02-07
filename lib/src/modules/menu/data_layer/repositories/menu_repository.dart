@@ -19,14 +19,14 @@ class MenuRepository extends BaseMenuRepository{
   Future<Either<FirebaseException,  List<ProductModel>>> getMashweyat()async {
     return await baseMenuRemoteDataSource.getMashweyat();
   }
-  @override
-  Future<Either<FirebaseException,void>>  setOrder({
-    required List<String> productNames,
-    required String address,
-    required double total,
-    required String gift
-  }) async {
-    return await baseMenuRemoteDataSource.setOrder(
-        productNames: productNames, address: address, total: total, gift: gift);
-  }
+  // @override
+  // Future<Either<FirebaseException,void>>  setOrder({
+  //   required List<String> productNames,
+  //   required String address,
+  //   required double total,
+  //   required String gift
+  // }) async {
+  //   return await baseMenuRemoteDataSource.setOrder(
+  //       productNames: productNames, address: address, total: total, gift: gift);
+  // }
 }

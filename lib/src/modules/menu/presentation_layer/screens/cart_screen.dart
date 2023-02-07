@@ -14,8 +14,10 @@ class CartScreen extends StatelessWidget {
       builder: (context, state) {
         var bloc = MenuBloc.get(context);
         double total = 0;
+        List<String> productNames = [];
         bloc.cartItems.forEach((element) {
           total += element.newPrice * element.number!;
+          productNames.add(element.name);
         });
         return Scaffold(
           appBar: AppBar(
@@ -87,10 +89,15 @@ class CartScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: ColorManager.primary,
-                        borderRadius: BorderRadius.circular(10.sp),
+                        borderRadius: BorderRadius.circular(20.sp),
                       ),
                       child: MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          bloc.add(NavigationToDeliveryScreenEvent(
+                              context: context,
+                              total: total,
+                              productNames: productNames));
+                        },
                         child: Text(
                           "شراء ",
                           style: TextStyle(

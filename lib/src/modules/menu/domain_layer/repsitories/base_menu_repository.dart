@@ -8,10 +8,10 @@ abstract class BaseMenuRepository {
   Future<Either<FirebaseException, List<ProductModel>>> getKoshary();
   Future<Either<FirebaseException, List<ProductModel>>> getMashweyat();
   Future<Either<FirebaseException, List<ProductModel>>> getHalaweyat();
-  Future<Either<FirebaseException,void>>  setOrder({
-    required List<String> productNames,
-    required String address,
-    required double total,
-    required String gift
-  });
+  // Future<Either<FirebaseException,void>>  setOrder({
+  //   required List<String> productNames,
+  //   required String address,
+  //   required double total,
+  //   required String gift
+  // });
 }

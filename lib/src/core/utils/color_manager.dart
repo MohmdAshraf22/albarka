@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 class ColorManager {
   static Color primary = Colors.blue;
   static Color yellow = HexColor('#F9CE00');
+  static Color blueWhite = HexColor('#67BFF9');
   static Color card = HexColor('#D4D7D9');
   static Color grey1 = Colors.grey[200]!;
   static Color grey2 = Colors.grey;

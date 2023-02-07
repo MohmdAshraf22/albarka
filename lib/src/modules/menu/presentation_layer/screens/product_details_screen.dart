@@ -146,7 +146,7 @@ class ProductDetails extends StatelessWidget {
                               Container(
                                 decoration: BoxDecoration(
                                     color: ColorManager.primary,
-                                    borderRadius: BorderRadius.circular(10.sp)),
+                                    borderRadius: BorderRadius.circular(20.sp)),
                                 width: double.infinity,
                                 child: MaterialButton(
                                   onPressed: () {
@@ -163,6 +163,27 @@ class ProductDetails extends StatelessWidget {
                               ),
                             ],
                           ),
+                    SizedBox(
+                      height: 15.sp,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: ColorManager.primary,
+                          borderRadius: BorderRadius.circular(20.sp)),
+                      width: double.infinity,
+                      child: MaterialButton(
+                        onPressed: () {
+                          bloc.add(NavigationToCartEvent(
+                              context: context));
+                        },
+                        child: Text(
+                          "الذهاب الى سلة المشتريات",
+                          style: TextStyle(
+                              color: ColorManager.white,
+                              fontSize: 15.sp),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import '../models/order_model.dart';
 import '../models/product_model.dart';
 
 abstract class BaseMenuRemoteDataSource {
@@ -8,12 +7,12 @@ abstract class BaseMenuRemoteDataSource {
   Future<Either<FirebaseException, List<ProductModel>>> getKoshary();
   Future<Either<FirebaseException, List<ProductModel>>> getMashweyat();
   Future<Either<FirebaseException, List<ProductModel>>> getHalaweyat();
-  Future<Either<FirebaseException,void>>  setOrder({
-    required List<String> productNames,
-    required String address,
-    required double total,
-    required String gift
-  });
+  // Future<Either<FirebaseException,void>>  setOrder({
+  //   required List<String> productNames,
+  //   required String address,
+  //   required double total,
+  //   required String gift
+  // });
 }
 
 class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
@@ -76,27 +75,27 @@ class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
     }
   }
 
-  @override
-  Future<Either<FirebaseException,void>> setOrder({
-    required List<String> productNames,
-    required String address,
-    required double total,
-    required String gift
-})async {
-    OrderModel orderModel = OrderModel(
-      productNames: productNames,
-      address: address,
-      gift: gift,
-      total: total,
-    );
-    try {
-      await FirebaseFirestore.instance
-          .collection("order")
-          .doc().set(orderModel.toJson());
-      return const Right(true);
-    }on FirebaseException catch (error) {
-      return Left(error);
-    }
-  }
+//   @override
+//   Future<Either<FirebaseException,void>> setOrder({
+//     required List<String> productNames,
+//     required String address,
+//     required double total,
+//     required String gift
+// })async {
+//     OrderModel orderModel = OrderModel(
+//       productNames: productNames,
+//       address: address,
+//       gift: gift,
+//       total: total,
+//     );
+//     try {
+//       await FirebaseFirestore.instance
+//           .collection("order")
+//           .doc().set(orderModel.toJson());
+//       return const Right(true);
+//     }on FirebaseException catch (error) {
+//       return Left(error);
+//     }
+//   }
 
 }

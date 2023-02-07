@@ -22,13 +22,13 @@ class GetHalaweyatEvent extends MenuEvent {
   List<Object?> get props => [];
 }
 
-class NavagationToProductsDetailsEvent extends MenuEvent {
+class NavigationToProductsDetailsEvent extends MenuEvent {
   final BuildContext context;
   final ProductModel product;
   final int index;
   final int collectionIndex;
 
-  const NavagationToProductsDetailsEvent(
+  const NavigationToProductsDetailsEvent(
       {required this.context,
       required this.product,
       required this.index,
@@ -78,16 +78,32 @@ class MinusNumberOfProductEvent extends MenuEvent {
   List<Object?> get props => [];
 }
 
-class AddOrderEvent extends MenuEvent {
+// class AddOrderEvent extends MenuEvent {
+//   final List<String> productNames;
+//   final String address;
+//   final double total;
+//   final String gift;
+//   const AddOrderEvent(
+//       {required this.productNames,
+//       required this.address,
+//       required this.total,
+//       required this.gift});
+//   @override
+//   List<Object?> get props => [productNames,address,total,gift];
+// }
+class NavigationToDeliveryScreenEvent extends MenuEvent {
+  final BuildContext context;
   final List<String> productNames;
-  final String address;
   final double total;
-  final String gift;
-  const AddOrderEvent(
-      {required this.productNames,
-      required this.address,
-      required this.total,
-      required this.gift});
+  const NavigationToDeliveryScreenEvent({required this.context,required this.productNames,required this.total});
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [context,productNames,total];
+}
+class NavigationToCartEvent extends MenuEvent {
+  final BuildContext context;
+  const NavigationToCartEvent(
+      {required this.context});
+
+  @override
+  List<Object?> get props => [context];
 }
