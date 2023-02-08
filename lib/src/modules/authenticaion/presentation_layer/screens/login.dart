@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
-        bool isVisible = bloc.currentVisibility;
+        bool isVisible = bloc.newVisibility;
         return Scaffold(
           appBar: AppBar(
             elevation: 0,

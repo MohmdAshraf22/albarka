@@ -72,8 +72,8 @@ class ChangePassScreen extends StatelessWidget {
                           ),
                           TextFormField(
                             controller: passwordController,
-                            keyboardType: bloc.type,
-                            obscureText: bloc.currentVisibility,
+                            keyboardType: bloc.newType,
+                            obscureText: bloc.newVisibility,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15.sp)),
@@ -82,7 +82,7 @@ class ChangePassScreen extends StatelessWidget {
                                     onPressed: () {
                                       bloc.add(const ChangeVisibilityEvent());
                                     },
-                                    icon: Icon(bloc.currentSuffix)),
+                                    icon: Icon(bloc.newSuffix)),
                                 labelText: 'كلمة السر الجديده'),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -96,18 +96,11 @@ class ChangePassScreen extends StatelessWidget {
                           ),
                           TextFormField(
                             controller: confirmPasswordController,
-                            keyboardType: bloc.confirmType,
-                            obscureText: bloc.confirmCurrentVisibility,
+                            obscureText: true,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15.sp)),
                                 prefixIcon: const Icon(Icons.lock_outline),
-                                suffixIcon: IconButton(
-                                    onPressed: () {
-                                      bloc.add(
-                                          const ConfirmChangeVisibilityEvent());
-                                    },
-                                    icon: Icon(bloc.confirmCurrentSuffix)),
                                 labelText: 'تأكيد كلمة السر الجديده'),
                             validator: (value) {
                               if (value!.isEmpty ||

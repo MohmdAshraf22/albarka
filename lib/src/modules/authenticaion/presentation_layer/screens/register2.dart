@@ -9,7 +9,11 @@ class RegisterScreen2 extends StatelessWidget {
   String email;
   String password;
   String name;
-  RegisterScreen2({required this.name,required this.email,required this.password,super.key});
+  RegisterScreen2(
+      {required this.name,
+      required this.email,
+      required this.password,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +66,8 @@ class RegisterScreen2 extends StatelessWidget {
                             },
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(15.sp)),
-                                prefixIcon:
-                                    const Icon(Icons.phone),
+                                    borderRadius: BorderRadius.circular(15.sp)),
+                                prefixIcon: const Icon(Icons.phone),
                                 labelText: 'الهاتف'),
                           ),
                           SizedBox(
@@ -82,8 +84,7 @@ class RegisterScreen2 extends StatelessWidget {
                             // },
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(15.sp)),
+                                    borderRadius: BorderRadius.circular(15.sp)),
                                 prefixIcon: const Icon(Icons.home),
                                 labelText: 'العنوان'),
                           ),
@@ -91,28 +92,29 @@ class RegisterScreen2 extends StatelessWidget {
                             height: 20.sp,
                           ),
                           State is! RegisterPhasetwoLoadingAuthState
-                              ? MaterialButton(
-                                  onPressed: () {
-                                    // int phone =
-                                    // int.parse(phoneController.text);
-                                    if (formKey.currentState!.validate()) {
-                                      bloc.add(RegisterPhasetwoEvent(
-                                          email: email,
-                                          password: password,
-                                          name: name,
-                                          phone: phoneController.text,
-                                          address: addressController.text,
-                                          context: context));
-                                    }
-                                  },
-                                  color: ColorManager.primary,
-                                  minWidth: double.infinity,
-                                  height: 1.h,
-                                  elevation: 5,
-                                  child: Text(
-                                    'تسجيل الحساب',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 18.sp),
+                              ? Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: ColorManager.primary,
+                                    borderRadius: BorderRadius.circular(20.sp),
+                                  ),
+                                  child: MaterialButton(
+                                    onPressed: () {
+                                      if (formKey.currentState!.validate()) {
+                                        bloc.add(RegisterPhasetwoEvent(
+                                            email: email,
+                                            password: password,
+                                            name: name,
+                                            phone: phoneController.text,
+                                            address: addressController.text,
+                                            context: context));
+                                      }
+                                    },
+                                    child: Text(
+                                      'تسجيل الحساب',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18.sp),
+                                    ),
                                   ),
                                 )
                               : const CircularProgressIndicator()

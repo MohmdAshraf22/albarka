@@ -61,10 +61,8 @@ class RegisterScreen extends StatelessWidget {
                             },
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(15.sp)),
-                                prefixIcon:
-                                    const Icon(Icons.person_3_outlined),
+                                    borderRadius: BorderRadius.circular(15.sp)),
+                                prefixIcon: const Icon(Icons.person_3_outlined),
                                 labelText: 'الاسم'),
                           ),
                           SizedBox(
@@ -81,8 +79,7 @@ class RegisterScreen extends StatelessWidget {
                             },
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(15.sp)),
+                                    borderRadius: BorderRadius.circular(15.sp)),
                                 prefixIcon: const Icon(Icons.email_outlined),
                                 labelText: 'الايميل'),
                           ),
@@ -91,23 +88,21 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           TextFormField(
                             controller: passwordController,
-                            keyboardType: bloc.type,
-                            obscureText: bloc.currentVisibility,
-                            decoration: InputDecoration (
+                            keyboardType: bloc.newType,
+                            obscureText: bloc.newVisibility,
+                            decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15.sp)),
-                                prefixIcon:  const Icon(Icons.lock_outline),
+                                prefixIcon: const Icon(Icons.lock_outline),
                                 suffixIcon: IconButton(
                                     onPressed: () {
-                                      bloc.add(const ChangeVisibilityEvent()) ;
+                                      bloc.add(const ChangeVisibilityEvent());
                                     },
-                                    icon: Icon(bloc.currentSuffix)
-                                ),
-                                labelText: 'الباسورد'),
+                                    icon: Icon(bloc.newSuffix)),
+                                labelText: 'كلمة السر'),
                             validator: (value) {
-                              if (value!.isEmpty)
-                              {
-                                return 'من فضلك اكتب الباسورد';
+                              if (value!.isEmpty) {
+                                return 'من فضلك اكتب كلمة السر';
                               }
                               return null;
                             },
@@ -117,22 +112,17 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           TextFormField(
                             controller: confirmPasswordController,
-                            keyboardType: bloc.confirmType,
-                            obscureText: bloc.confirmCurrentVisibility,
+                            obscureText: true,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15.sp)),
-                                prefixIcon:  const Icon(Icons.lock_outline),
-                                suffixIcon: IconButton(
-                                    onPressed: () {
-                                      bloc.add(const ConfirmChangeVisibilityEvent());
-                                    },
-                                    icon: Icon(bloc.confirmCurrentSuffix)
-                                ),
-                                labelText: 'تأكيد الباسورد'),
+                                prefixIcon: const Icon(Icons.lock_outline),
+                                labelText: 'تأكيد كلمة السر'),
                             validator: (value) {
-                              if (value!.isEmpty || passwordController.text != confirmPasswordController.text) {
-                                return 'من فضلك تأكد من كتابة الباسورد تاني';
+                              if (value!.isEmpty ||
+                                  passwordController.text !=
+                                      confirmPasswordController.text) {
+                                return 'من فضلك تأكد من كتابة كلمة السر تاني';
                               }
                               return null;
                             },
@@ -140,29 +130,31 @@ class RegisterScreen extends StatelessWidget {
                           SizedBox(
                             height: 2.5.h,
                           ),
-                          Container(
-                            alignment: AlignmentDirectional.centerStart,
-                                child: MaterialButton(
-                                    onPressed: () {
-                                      if (formKey.currentState!.validate()) {
-                                        bloc.add(RegisterPhaseOneEvent1(
-                                            email: emailController.text,
-                                            password: passwordController.text,
-                                            name: nameController.text,
-                                            context: context));
-                                      }
-                                    },
-                                    color: ColorManager.primary,
-                                    minWidth: 1.w,
-                                    height: 1.h,
-                                    elevation: 3.sp,
-                                    child: Text(
-                                      'كمل',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18.sp),
-                                    ),
-                                  ),
-                              )
+                          Align(
+                            alignment: AlignmentDirectional.bottomStart,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: ColorManager.primary,
+                                borderRadius: BorderRadius.circular(20.sp),
+                              ),
+                              child: MaterialButton(
+                                onPressed: () {
+                                  if (formKey.currentState!.validate()) {
+                                    bloc.add(RegisterPhaseOneEvent1(
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                        name: nameController.text,
+                                        context: context));
+                                  }
+                                },
+                                child: Text(
+                                  'كمل',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18.sp),
+                                ),
+                              ),
+                            ),
+                          )
                         ]),
                   ),
                 ),

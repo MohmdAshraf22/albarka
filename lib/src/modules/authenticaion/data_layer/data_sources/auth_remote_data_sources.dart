@@ -38,7 +38,7 @@ abstract class BaseAuthRemoteDataSource {
 }
 
 class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
-  UserModel? userData;
+  UserModel? user;
 
   @override
   Future<Either<FirebaseAuthException, UserCredential?>> loginWithEmailAndPass(
@@ -136,9 +136,9 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
           .doc(uId)
           .get()
           .then((value) {
-        userData = UserModel.fromJson(value.data()!);
+        user = UserModel.fromJson(value.data()!);
       });
-      return Right(userData!);
+      return Right(user!);
     } on FirebaseException catch (error) {
       return Left(error);
     }
@@ -159,6 +159,9 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       final cred = EmailAuthProvider.credential(
           email: user!.email!, password: oldPassword);
       UserCredential authResult = await user.reauthenticateWithCredential(cred);
+      if(user.email! != email) {
+        user.updateEmail(email);
+      }
       if (authResult.user != null) {
         await FirebaseFirestore.instance
             .collection('users')
