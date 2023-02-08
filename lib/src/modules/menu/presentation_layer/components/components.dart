@@ -63,11 +63,11 @@ Widget ItemProductGrid(ProductModel product, context, index) {
                     horizontal: 10.sp,
                   ),
                   child: Text(
-                    "${product.newPrice}\$",
+                    "${product.newPrice}  ج.م",
                     style: TextStyle(
                         color: ColorManager.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15.sp),
+                        fontSize: 13.sp),
                   ),
                 ),
               ],
@@ -79,126 +79,6 @@ Widget ItemProductGrid(ProductModel product, context, index) {
   );
 }
 
-// Widget ItemCartGrid(ProductModel product, context, index) {
-//   var bloc = MenuBloc.get(context);
-//   return BlocBuilder<MenuBloc, MenuState>(
-//     builder: (context, state) {
-//       return InkWell(
-//         onLongPress: () {
-//           bloc.add(const ChangeIsSelectedEvent());
-//           if (!bloc.isSelected) {
-//             bloc.selectProducts.add(product);
-//           } else {
-//             bloc.selectProducts.clear();
-//           }
-//         },
-//         onTap: () {
-//           if (bloc.selectProducts.contains(product)) {
-//             bloc.selectProducts.remove(product);
-//           } else {
-//             bloc.selectProducts.add(product);
-//           }
-//           bloc.add(const IsSelectedProductEvent());
-//         },
-//         child: Card(
-//           elevation: 7,
-//           color: ColorManager.card,
-//           child: Stack(
-//             alignment: AlignmentDirectional.topStart,
-//             children: [
-//               Stack(
-//                 alignment: AlignmentDirectional.bottomEnd,
-//                 children: [
-//                   Container(
-//                     clipBehavior: Clip.antiAliasWithSaveLayer,
-//                     decoration: BoxDecoration(
-//                       color: ColorManager.white,
-//                       borderRadius: BorderRadiusDirectional.only(
-//                           bottomEnd: Radius.circular(8.sp),
-//                           bottomStart: Radius.circular(8.sp)),
-//                     ),
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Container(
-//                           height: 105.sp,
-//                           width: double.infinity,
-//                           decoration: BoxDecoration(
-//                             color: ColorManager.card,
-//                             image: product.image == ''
-//                                 ? null
-//                                 : DecorationImage(
-//                                     image: NetworkImage(
-//                                       product.image!,
-//                                     ),
-//                                     fit: BoxFit.cover,
-//                                   ),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: EdgeInsets.symmetric(horizontal: 10.sp),
-//                           child: Text(
-//                             product.name,
-//                             maxLines: 1,
-//                             overflow: TextOverflow.ellipsis,
-//                             style: TextStyle(
-//                                 color: ColorManager.black,
-//                                 fontWeight: FontWeight.w600,
-//                                 fontSize: 17.sp),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: EdgeInsets.symmetric(
-//                             horizontal: 10.sp,
-//                           ),
-//                           child: Text(
-//                             "${product.oldPrice}\$",
-//                             style: TextStyle(
-//                                 color: ColorManager.black,
-//                                 fontWeight: FontWeight.bold,
-//                                 fontSize: 15.sp),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                   bloc.isSelected
-//                       ? IconButton(
-//                           onPressed: () {
-//                             if (bloc.selectProducts.contains(product)) {
-//                               bloc.selectProducts.remove(product);
-//                             } else {
-//                               bloc.selectProducts.add(product);
-//                             }
-//                             bloc.add(const IsSelectedProductEvent());
-//                           },
-//                           icon: bloc.selectProducts.contains(product)
-//                               ? const Icon(Icons.check_box)
-//                               : const Icon(Icons.check_box_outline_blank),
-//                         )
-//                       : Container(),
-//                 ],
-//               ),
-//               Container(
-//                 decoration: BoxDecoration(
-//                     color: ColorManager.primary,
-//                     borderRadius: BorderRadius.circular(8)),
-//                 width: 30.sp,
-//                 height: 30.sp,
-//                 child: Center(
-//                     child: Text(
-//                   "${product.number}",
-//                   style: TextStyle(
-//                       color: ColorManager.white, fontWeight: FontWeight.bold),
-//                 )),
-//               )
-//             ],
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
 
 Widget itemCartList(ProductModel product, context, index) {
   var bloc = MenuBloc.get(context);

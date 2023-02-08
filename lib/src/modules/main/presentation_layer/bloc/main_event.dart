@@ -18,3 +18,11 @@ class LogOutEvent extends MainEvent {
   @override
   List<Object?> get props => [context];
 }
+class NavigationToUpdateScreenEvent extends MainEvent {
+  final BuildContext context;
+  const NavigationToUpdateScreenEvent(
+      {required this.context});
+
+  @override
+  List<Object?> get props => [context];
+}

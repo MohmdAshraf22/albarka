@@ -36,7 +36,9 @@ class MainScreen extends StatelessWidget {
                     Icons.settings,
                   ),
                   title: const Text('الأعدادات '),
-                  onTap: () {},
+                  onTap: () {
+                    bloc.add(NavigationToUpdateScreenEvent(context: context));
+                  },
                 ),
                 ListTile(
                   leading: const Icon(

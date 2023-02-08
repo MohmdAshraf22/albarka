@@ -7,6 +7,7 @@ import '../../../../core/local/shared_prefrences.dart';
 import '../../../../core/services/constants.dart';
 import '../../../../core/utils/navigation_manager.dart';
 import '../../../authenticaion/presentation_layer/screens/login.dart';
+import '../../../authenticaion/presentation_layer/screens/update.dart';
 import '../../../delivery/presentation_layer/screens/delivery_screen.dart';
 import '../../../menu/presentation_layer/screens/cart_screen.dart';
 import '../../../menu/presentation_layer/screens/menu_screen.dart';
@@ -40,6 +41,10 @@ class MainBloc extends Bloc<MainEvent, MainState> {
             NavigationManager.pushAndRemove(event.context, const LoginScreen());
           }
         });
+      }
+      else if (event is NavigationToUpdateScreenEvent) {
+        NavigationManager.push(event.context, const UpdateScreen());
+        emit(NavigationToUpdateScreenState(context:event.context));
       }
     });
   }

@@ -22,3 +22,12 @@ class LogOutState extends MainState {
   @override
   List<Object?> get props => [context];
 }
+class NavigationToUpdateScreenState extends MainState {
+  final BuildContext context;
+  const NavigationToUpdateScreenState(
+      {required this.context});
+
+  @override
+  List<Object?> get props => [context];
+}
+

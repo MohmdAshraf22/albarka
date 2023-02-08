@@ -76,9 +76,10 @@ class CartScreen extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          "$total LE",
+                          "${total.toStringAsFixed(1)}  ج.م",
                           style: TextStyle(
-                              fontSize: 20.sp, fontWeight: FontWeight.bold),
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

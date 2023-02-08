@@ -1,3 +1,4 @@
+import 'package:albaraka/src/modules/authenticaion/data_layer/models/user_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -15,7 +16,6 @@ class AuthRepository extends BaseAuthRepository {
     return baseAuthRemoteDataSource.loginWithEmailAndPass(
         email: email, password: password);
 
-    throw UnimplementedError();
   }
 
   @override
@@ -64,7 +64,28 @@ class AuthRepository extends BaseAuthRepository {
   Future<Either<FirebaseAuthException, void>> forgetPassword(
       {required String email}) async {
     return await baseAuthRemoteDataSource.forgetPassword(email: email);
-
-    throw UnimplementedError();
   }
+
+  @override
+  Future<Either<FirebaseException, UserModel>> getDataUser()async {
+    return await baseAuthRemoteDataSource.getDataUser();
+  }
+  @override
+  Future<Either<FirebaseAuthException, void>> updateDataUser({
+    required String phone,
+    required String address,
+    required String name,
+    required String oldPassword,
+    required String email,}) async{
+    return await baseAuthRemoteDataSource.updateDataUser(
+        phone: phone, address: address, name: name, oldPassword: oldPassword, email: email);
+  }
+  @override
+  Future<Either<FirebaseAuthException, void>> changePassword({
+  required String oldPassword,
+  required String newPassword,}) async{
+    return await baseAuthRemoteDataSource.changePassword(
+        newPassword: newPassword,oldPassword: oldPassword);
+  }
+
 }

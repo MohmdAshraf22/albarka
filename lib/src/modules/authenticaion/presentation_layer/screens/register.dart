@@ -19,7 +19,6 @@ class RegisterScreen extends StatelessWidget {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
-        bool isVisible = bloc.currentVisibility;
         return Scaffold(
             appBar: AppBar(
               elevation: 0,
@@ -92,25 +91,22 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           TextFormField(
                             controller: passwordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText:
-                                bloc.currentVisibility ? false : true,
-                            decoration: InputDecoration(
+                            keyboardType: bloc.type,
+                            obscureText: bloc.currentVisibility,
+                            decoration: InputDecoration (
                                 border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(15.sp)),
-                                prefixIcon: const Icon(Icons.lock_outline),
+                                    borderRadius: BorderRadius.circular(15.sp)),
+                                prefixIcon:  const Icon(Icons.lock_outline),
                                 suffixIcon: IconButton(
                                     onPressed: () {
-                                      bloc.add(
-                                          ChangeVisibilityEvent(isVisible));
+                                      bloc.add(const ChangeVisibilityEvent()) ;
                                     },
-                                    icon: isVisible
-                                        ? const Icon(Icons.visibility_off)
-                                        : const Icon(Icons.visibility)),
+                                    icon: Icon(bloc.currentSuffix)
+                                ),
                                 labelText: 'الباسورد'),
                             validator: (value) {
-                              if (value!.isEmpty) {
+                              if (value!.isEmpty)
+                              {
                                 return 'من فضلك اكتب الباسورد';
                               }
                               return null;
@@ -121,25 +117,22 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           TextFormField(
                             controller: confirmPasswordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: isVisible ? false : true,
+                            keyboardType: bloc.confirmType,
+                            obscureText: bloc.confirmCurrentVisibility,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(15.sp)),
-                                prefixIcon: const Icon(Icons.lock_outline),
+                                    borderRadius: BorderRadius.circular(15.sp)),
+                                prefixIcon:  const Icon(Icons.lock_outline),
                                 suffixIcon: IconButton(
                                     onPressed: () {
-                                      bloc.add(
-                                          ChangeVisibilityEvent(isVisible));
+                                      bloc.add(const ConfirmChangeVisibilityEvent());
                                     },
-                                    icon: isVisible
-                                        ? const Icon(Icons.visibility_off)
-                                        : const Icon(Icons.visibility)),
+                                    icon: Icon(bloc.confirmCurrentSuffix)
+                                ),
                                 labelText: 'تأكيد الباسورد'),
                             validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'من فضلك اكتب الباسورد تاني';
+                              if (value!.isEmpty || passwordController.text != confirmPasswordController.text) {
+                                return 'من فضلك تأكد من كتابة الباسورد تاني';
                               }
                               return null;
                             },
