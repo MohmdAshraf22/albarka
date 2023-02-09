@@ -8,7 +8,6 @@ import '../../../../core/services/constants.dart';
 import '../../../../core/utils/navigation_manager.dart';
 import '../../../authenticaion/presentation_layer/screens/login.dart';
 import '../../../authenticaion/presentation_layer/screens/update.dart';
-import '../../../delivery/presentation_layer/screens/delivery_screen.dart';
 import '../../../menu/presentation_layer/screens/cart_screen.dart';
 import '../../../menu/presentation_layer/screens/menu_screen.dart';
 
