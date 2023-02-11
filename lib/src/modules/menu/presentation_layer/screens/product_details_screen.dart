@@ -6,12 +6,17 @@ import '../../../../core/utils/color_manager.dart';
 import '../../../../core/utils/navigation_manager.dart';
 import '../../data_layer/models/product_model.dart';
 import '../bloc/menu_bloc.dart';
+import '../components/components.dart';
 
 class ProductDetails extends StatelessWidget {
   ProductModel product;
   int index;
   int collectionIndex;
-  ProductDetails(this.index, this.product, this.collectionIndex, ) : super();
+  ProductDetails(
+    this.index,
+    this.product,
+    this.collectionIndex,
+  ) : super();
   @override
   Widget build(BuildContext context) {
     var bloc = MenuBloc.get(context);
@@ -94,96 +99,100 @@ class ProductDetails extends StatelessWidget {
                       height: 20.sp,
                     ),
                     bloc.cartItems.contains(product)
-                        ? TextButton(
-                      onPressed: () {
-                        bloc.add(
-                            EditAddProductToCartEvent(product: product));
-                      },
-                      child: const Text(
-                          "تم الإضافة الى سلة المشتريات هل تريد التعديل ؟"),
-                    )
-                        : Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
+                        ? Column(
+                            children: [
+                              TextButton(
                                 onPressed: () {
-                                  bloc.add(
-                                      const PlusNumberOfProductEvent());
+                                  bloc.add(EditAddProductToCartEvent(
+                                      product: product));
                                 },
-                                icon: Icon(
-                                  Icons.add_circle,
-                                  color: ColorManager.primary,
-                                  size: 28.sp,
-                                )),
-                            SizedBox(
-                              width: 10.sp,
-                            ),
-                            Text(
-                              '${bloc.number}',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp),
-                            ),
-                            SizedBox(
-                              width: 10.sp,
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  if (bloc.number > 1) {
-                                    bloc.add(
-                                        const MinusNumberOfProductEvent());
-                                  }
-                                },
-                                icon: Icon(Icons.remove_circle,
+                                child: const Text(
+                                    "تم الإضافة الى سلة المشتريات هل تريد التعديل ؟"),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
                                     color: ColorManager.primary,
-                                    size: 28.sp)),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15.sp,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: ColorManager.primary,
-                              borderRadius: BorderRadius.circular(20.sp)),
-                          width: double.infinity,
-                          child: MaterialButton(
-                            onPressed: () {
-                              bloc.add(AddProductToCartEvent(
-                                  product: product));
-                            },
-                            child: Text(
-                              "إضافة الى سلة المشتريات",
-                              style: TextStyle(
-                                  color: ColorManager.white,
-                                  fontSize: 15.sp),
-                            ),
+                                    borderRadius: BorderRadius.circular(20.sp)),
+                                width: double.infinity,
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    bloc.add(NavigationToCartEvent(
+                                        context: context));
+                                  },
+                                  child: Text(
+                                    "الذهاب الى سلة المشتريات",
+                                    style: TextStyle(
+                                        color: ColorManager.white,
+                                        fontSize: 15.sp),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        bloc.add(
+                                            const PlusNumberOfProductEvent());
+                                      },
+                                      icon: Icon(
+                                        Icons.add_circle,
+                                        color: ColorManager.primary,
+                                        size: 28.sp,
+                                      )),
+                                  SizedBox(
+                                    width: 10.sp,
+                                  ),
+                                  Text(
+                                    '${bloc.number}',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp),
+                                  ),
+                                  SizedBox(
+                                    width: 10.sp,
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        if (bloc.number > 1) {
+                                          bloc.add(
+                                              const MinusNumberOfProductEvent());
+                                        }
+                                      },
+                                      icon: Icon(Icons.remove_circle,
+                                          color: ColorManager.primary,
+                                          size: 28.sp)),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15.sp,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: ColorManager.primary,
+                                    borderRadius: BorderRadius.circular(20.sp)),
+                                width: double.infinity,
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    bloc.add(AddProductToCartEvent(
+                                        product: product));
+                                  },
+                                  child: Text(
+                                    "إضافة الى سلة المشتريات",
+                                    style: TextStyle(
+                                        color: ColorManager.white,
+                                        fontSize: 15.sp),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
                     SizedBox(
                       height: 15.sp,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: ColorManager.primary,
-                          borderRadius: BorderRadius.circular(20.sp)),
-                      width: double.infinity,
-                      child: MaterialButton(
-                        onPressed: () {
-                          bloc.add(NavigationToCartEvent(
-                              context: context));
-                        },
-                        child: Text(
-                          "الذهاب الى سلة المشتريات",
-                          style: TextStyle(
-                              color: ColorManager.white,
-                              fontSize: 15.sp),
-                        ),
-                      ),
                     ),
                   ],
                 ),

@@ -22,6 +22,8 @@ class MenuScreen extends StatelessWidget {
         builder: (context, state) {
           if (i == 1) {
             bloc.add(const GetKosharyEvent());
+            bloc.add(const GetMashweyatEvent());
+            bloc.add(const GetHalaweyatEvent());
           }
           i = 0;
           return Scaffold(
@@ -31,15 +33,6 @@ class MenuScreen extends StatelessWidget {
               body: ContainedTabBarView(
                 initialIndex: 0,
                 onChange: (changeTab) {
-                  if (changeTab == 0) {
-                    bloc.add(const GetKosharyEvent());
-                  }
-                  else if (changeTab == 1) {
-                    bloc.add(const GetMashweyatEvent());
-                  }
-                  else {
-                    bloc.add(const GetHalaweyatEvent());
-                  }
                   bloc.add(ChangeTabBarEvent(changeTab: changeTab));
                 },
                 tabs: [

@@ -39,11 +39,11 @@ Widget ItemProductGrid(ProductModel product, context, index) {
                     image: product.image == ''
                         ? null
                         : DecorationImage(
-                            image: NetworkImage(
-                              product.image!,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
+                      image: NetworkImage(
+                        product.image!,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Padding(
@@ -126,11 +126,11 @@ Widget itemCartList(ProductModel product, context, index) {
                     image: product.image == ''
                         ? null
                         : DecorationImage(
-                            image: NetworkImage(
-                              product.image!,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
+                      image: NetworkImage(
+                        product.image!,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -174,3 +174,17 @@ Widget itemCartList(ProductModel product, context, index) {
     },
   );
 }
+
+// class ViewImage extends StatelessWidget {
+//   dynamic image;
+//   ViewImage({required this.image,super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Padding(
+//         padding: EdgeInsets.all(20.0.sp),
+//         child: image is Uri ? Image.network(image,width: double.infinity,height: double.infinity,):
+//         Image.asset("assets/image/$image"),
+//       ),
+//     );  }
+// }

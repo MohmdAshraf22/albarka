@@ -88,11 +88,14 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       }
       else if (event is NavigationToDeliveryScreenEvent) {
         if (event.productNames.isNotEmpty) {
-          NavigationManager.push(event.context, DeliveryScreen(
-                productNames: event.productNames,
-                total: event.total,
-              ));
-          emit(NavigationToDeliveryScreenState(context: event.context));
+          await Future.delayed(const Duration(seconds: 1));
+          //if (event.context.mounted) {
+            NavigationManager.push(event.context, DeliveryScreen(
+              productNames: event.productNames,
+              total: event.total,
+            ));
+            emit(NavigationToDeliveryScreenState(context: event.context));
+         // }
         } else {
           errorToast(msg: "لم يتم اختيار اي منتج لشراءه ");
           emit(const NavigationToDeliveryScreenErrorState());
