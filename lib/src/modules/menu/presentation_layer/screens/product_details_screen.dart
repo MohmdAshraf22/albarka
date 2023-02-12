@@ -43,6 +43,10 @@ class ProductDetails extends StatelessWidget {
                             width: double.infinity,
                             height: 320.sp,
                             decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10.sp),
+                                bottomLeft: Radius.circular(10.sp),
+                              ),
                               color: ColorManager.card,
                               image: DecorationImage(
                                   image: NetworkImage(product.image!),
