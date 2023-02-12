@@ -6,7 +6,7 @@ class SetOrderUseCase{
   final BaseOrderRepository baseOrderRepository;
   SetOrderUseCase(this.baseOrderRepository);
   Future<Either<FirebaseException,  void>> set({
-    required List<String> productNames,
+    required List<String> productDetails,
     required String address,
     required double total,
     required String phone,
@@ -16,7 +16,7 @@ class SetOrderUseCase{
     double? longitude,
   })async{
     return await baseOrderRepository.setOrder(
-        productNames: productNames,
+        productDetails: productDetails,
         address: address,
         total: total,
         phone: phone,

@@ -1,8 +1,7 @@
 import '../../domain_layer/entities/order.dart';
-
 class OrderModel extends Order {
   OrderModel(
-      {required super.productNames,
+      {required super.productDetails,
         required super.address,
         required super.phone,
         required super.total,
@@ -12,7 +11,8 @@ class OrderModel extends Order {
         required super.gift});
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
-      productNames: List<String>.from(json['productNames'].map((e) => e)),
+      productDetails: List<String>.from(
+          json['productDetails'].map((e) => e)),
       address: json['address'],
       phone: json['phone'],
       total: json['total'],
@@ -24,7 +24,7 @@ class OrderModel extends Order {
   }
   Map<String, dynamic> toJson() {
     return {
-      'productNames': productNames,
+      'productDetails': productDetails,
       'address': address,
       'total': total,
       'longitude': longitude,

@@ -2,7 +2,6 @@ import 'package:albaraka/src/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
-
 import '../bloc/menu_bloc.dart';
 import '../components/components.dart';
 
@@ -14,10 +13,16 @@ class CartScreen extends StatelessWidget {
       builder: (context, state) {
         var bloc = MenuBloc.get(context);
         double total = 0;
-        List<String> productNames = [];
+        int test = 0;
+        String gift = '';
+        List<String> productDetails = [];
         bloc.cartItems.forEach((element) {
           total += element.newPrice * element.number!;
-          productNames.add(element.name);
+          if(element.quantity != null) {
+            test = element.number! ~/ element.quantity!;
+          }
+          gift = (test > 0)?' $test ${element.offerDetails} ': 'no';
+          productDetails.add(" ${element.number}  ${element.name} ");
         });
         return Scaffold(
           appBar: AppBar(
@@ -97,7 +102,8 @@ class CartScreen extends StatelessWidget {
                           bloc.add(NavigationToDeliveryScreenEvent(
                               context: context,
                               total: total,
-                              productNames: productNames));
+                              gift: gift,
+                              productDetails: productDetails));
                         },
                         child: Text(
                           "شراء ",

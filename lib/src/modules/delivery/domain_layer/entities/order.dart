@@ -1,8 +1,7 @@
-import 'package:albaraka/src/modules/delivery/domain_layer/entities/location.dart';
 import 'package:equatable/equatable.dart';
 
 class Order extends Equatable {
-  final List<String> productNames;
+  final List<String> productDetails;
   final String address;
   final double total;
   final String gift;
@@ -12,7 +11,7 @@ class Order extends Equatable {
   final bool howToPaid;
 
   Order({
-    required this.productNames,
+    required this.productDetails,
     required this.address,
     required this.total,
     required this.gift,
@@ -22,6 +21,6 @@ class Order extends Equatable {
     this.longitude,
   });
   @override
-  List<Object?> get props => [productNames,address,total,gift,phone,howToPaid];
+  List<Object?> get props => [productDetails,address,total,gift,phone,howToPaid];
 
 }

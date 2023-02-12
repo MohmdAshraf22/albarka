@@ -11,16 +11,21 @@ class Product extends Equatable {
   final double oldPrice;
   final double points;
   final double newPrice;
-   Product(
-      { this.image,
+  String? offerDetails;
+  int? quantity;
+  Product(
+      {this.image,
       required this.name,
       this.imagePaths,
       this.number,
+      this.offerDetails,
+      this.quantity,
       required this.describe,
       required this.newPrice,
       required this.points,
       required this.oldPrice});
 
   @override
-  List<Object?> get props => [image, name,imagePaths,describe ,newPrice,points, oldPrice];
+  List<Object?> get props =>
+      [image, name, imagePaths, describe, newPrice, points, oldPrice,offerDetails,quantity];
 }

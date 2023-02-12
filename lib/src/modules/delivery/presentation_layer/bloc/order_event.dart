@@ -9,21 +9,21 @@ class GetDataUserEvent extends OrderEvent{
   List<Object?> get props => [];
 }
 class AddOrderEvent extends OrderEvent {
-  final List<String> productNames;
+  final List<String> productDetails;
   final String address;
   final String phone;
   final double total;
   final String gift;
   final bool howToPaid;
   const AddOrderEvent(
-      {required this.productNames,
+      {required this.productDetails,
         required this.address,
         required this.total,
         required this.howToPaid,
         required this.phone,
         required this.gift});
   @override
-  List<Object?> get props => [productNames,address,phone,total,gift,howToPaid];
+  List<Object?> get props => [productDetails,address,phone,total,gift,howToPaid];
 }
 class GetMyLocationEvent extends OrderEvent{
    const GetMyLocationEvent();

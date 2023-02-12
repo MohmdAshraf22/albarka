@@ -4,7 +4,6 @@ import 'package:albaraka/src/modules/authenticaion/presentation_layer/components
 import 'package:albaraka/src/modules/delivery/presentation_layer/screens/delivery_screen.dart';
 import 'package:albaraka/src/modules/menu/presentation_layer/screens/cart_screen.dart';
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,12 +86,13 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
         emit(EditAddProductToCartState(product: event.product));
       }
       else if (event is NavigationToDeliveryScreenEvent) {
-        if (event.productNames.isNotEmpty) {
+        if (event.productDetails.isNotEmpty) {
           await Future.delayed(const Duration(seconds: 1));
           //if (event.context.mounted) {
             NavigationManager.push(event.context, DeliveryScreen(
-              productNames: event.productNames,
+              productDetails: event.productDetails,
               total: event.total,
+              gift: event.gift,
             ));
             emit(NavigationToDeliveryScreenState(context: event.context));
          // }

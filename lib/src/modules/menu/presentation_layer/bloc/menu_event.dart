@@ -79,11 +79,12 @@ class MinusNumberOfProductEvent extends MenuEvent {
 }
 class NavigationToDeliveryScreenEvent extends MenuEvent {
   final BuildContext context;
-  final List<String> productNames;
+  final List<String> productDetails;
   final double total;
-  const NavigationToDeliveryScreenEvent({required this.context,required this.productNames,required this.total});
+  final String gift;
+  const NavigationToDeliveryScreenEvent({required this.context,required this.productDetails,required this.total,required this.gift});
   @override
-  List<Object?> get props => [context,productNames,total];
+  List<Object?> get props => [context,productDetails,total,gift];
 }
 class NavigationToCartEvent extends MenuEvent {
   final BuildContext context;

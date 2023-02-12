@@ -9,7 +9,7 @@ import '../models/user_model.dart';
 abstract class BaseOrderRemoteDataSource {
   Future<Either<FirebaseException, UserModel>> getDataUser();
   Future<Either<FirebaseException, void>> setOrder({
-    required List<String> productNames,
+    required List<String> productDetails,
     required String address,
     required double total,
     required String gift,
@@ -42,7 +42,7 @@ class OrderRemoteDataSource extends BaseOrderRemoteDataSource {
 
   @override
   Future<Either<FirebaseException, void>> setOrder({
-    required List<String> productNames,
+    required List<String> productDetails,
     required String address,
     required double total,
     required String gift,
@@ -54,7 +54,7 @@ class OrderRemoteDataSource extends BaseOrderRemoteDataSource {
   }) async {
     OrderModel orderModel = OrderModel(
       phone: phone,
-      productNames: productNames,
+      productDetails: productDetails,
       address: address,
       gift: gift,
       total: total,

@@ -44,7 +44,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       }
       else if (event is AddOrderEvent) {
         final result = await SetOrderUseCase(sl()).set(
-            productNames: event.productNames,
+            productDetails: event.productDetails,
             address: event.address,
             phone: event.phone,
             total: event.total,

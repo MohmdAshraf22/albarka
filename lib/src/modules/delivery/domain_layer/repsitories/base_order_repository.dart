@@ -6,7 +6,7 @@ import '../../data_layer/models/user_model.dart';
 abstract class BaseOrderRepository{
   Future<Either<FirebaseException,UserModel>> getDataUser();
   Future<Either<FirebaseException,void>>  setOrder({
-    required List<String> productNames,
+    required List<String> productDetails,
     required String address,
     required double total,
     required String gift,

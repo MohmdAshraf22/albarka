@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,11 +8,12 @@ import '../../../../core/utils/color_manager.dart';
 import '../bloc/order_bloc.dart';
 
 class DeliveryScreen extends StatelessWidget {
-  final List<String> productNames;
+  final List<String> productDetails;
   final double total;
+  final String gift;
 
   const DeliveryScreen(
-      {Key? key, required this.productNames, required this.total})
+      {Key? key, required this.productDetails, required this.total,required this.gift})
       : super(key: key);
 
   @override
@@ -187,9 +187,9 @@ class DeliveryScreen extends StatelessWidget {
                                                         onPressed: () {
                                                           bloc.add(AddOrderEvent(
                                                             howToPaid: false,
-                                                            gift: "no",
+                                                            gift: gift,
                                                             address: addressController.text,
-                                                            productNames: productNames,
+                                                            productDetails: productDetails,
                                                             total: total,
                                                             phone:phoneController.text,
                                                           ));
@@ -214,9 +214,9 @@ class DeliveryScreen extends StatelessWidget {
                                                         onPressed: () {
                                                           bloc.add(AddOrderEvent(
                                                               howToPaid: true,
-                                                              gift: "no",
+                                                              gift: gift,
                                                               address: addressController.text,
-                                                              productNames: productNames,
+                                                              productDetails: productDetails,
                                                               total: total,
                                                               phone: phoneController.text,
                                                           ));
@@ -240,7 +240,7 @@ class DeliveryScreen extends StatelessWidget {
                                                                         onPressed: () {
                                                                           bloc.add(NavigationToMainScreenEvent(context: context));
                                                                         },
-                                                                        child: const Text('القائمة الرئسية'),
+                                                                        child: const Text('الرئسية'),
                                                                       ),
                                                                     ],
                                                                   ),
