@@ -28,6 +28,7 @@ class CartScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text("سلة المشتريات"),
           ),
+
           body: Column(
             children: [
               Expanded(

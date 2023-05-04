@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import '../../data_layer/models/lcation_model.dart';
 import '../../data_layer/models/user_model.dart';
-
 abstract class BaseOrderRepository{
   Future<Either<FirebaseException,UserModel>> getDataUser();
   Future<Either<FirebaseException,void>>  setOrder({

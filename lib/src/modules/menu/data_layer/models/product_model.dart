@@ -24,6 +24,7 @@ class ProductModel extends Product {
           offerDetails: offerDetails,
           quantity: quantity,
         );
+
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
         image: json['image'],

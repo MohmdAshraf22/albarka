@@ -8,7 +8,6 @@ class MenuInitial extends MenuState {
   @override
   List<Object> get props => [];
 }
-
 class ChangeTabBarState extends MenuState {
   final int changeTab;
   const ChangeTabBarState({required this.changeTab});

@@ -50,7 +50,6 @@ class MenuRemoteDataSource extends BaseMenuRemoteDataSource {
       return Left(error);
     }
   }
-
   Future<Either<FirebaseException, List<ProductModel>>> getHalaweyat() async {
     halaweyat = [];
     try {

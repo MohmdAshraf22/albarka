@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../repsitories/base_auth_repository.dart';
 
 class ForgetPasswordUseCase

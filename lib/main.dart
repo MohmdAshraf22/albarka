@@ -57,8 +57,8 @@ class MyApp extends StatelessWidget
         child: MaterialApp (
           debugShowCheckedModeBanner: false,
           title: 'الزبائن',
-          theme: ThemeData
-            (primarySwatch: Colors.blue,),
+          theme: ThemeData(
+            primarySwatch: Colors.blue,),
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

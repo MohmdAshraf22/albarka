@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 class User extends Equatable {
   final String address;
   final String phone;

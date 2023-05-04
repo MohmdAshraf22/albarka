@@ -19,6 +19,7 @@ import '../screens/login.dart';
 import '../screens/register.dart';
 import '../screens/register2.dart';
 
+
 part 'auth_event.dart';
 part 'auth_state.dart';
 

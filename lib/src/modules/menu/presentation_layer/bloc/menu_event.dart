@@ -27,7 +27,6 @@ class NavigationToProductsDetailsEvent extends MenuEvent {
   final ProductModel product;
   final int index;
   final int collectionIndex;
-
   const NavigationToProductsDetailsEvent(
       {required this.context,
       required this.product,

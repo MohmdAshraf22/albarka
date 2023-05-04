@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/utils/color_manager.dart';
-
 
 TextFormField defaultFormField(
     {required String label,

@@ -107,6 +107,7 @@ class ProductDetails extends StatelessWidget {
                             children: [
                               TextButton(
                                 onPressed: () {
+
                                   bloc.add(EditAddProductToCartEvent(
                                       product: product));
                                 },

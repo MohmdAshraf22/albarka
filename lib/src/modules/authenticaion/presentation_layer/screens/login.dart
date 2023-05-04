@@ -1,12 +1,8 @@
 import 'package:albaraka/src/modules/authenticaion/presentation_layer/screens/forget_password.dart';
 import 'package:albaraka/src/modules/authenticaion/presentation_layer/screens/register.dart';
-import 'package:albaraka/src/modules/main/presentation_layer/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../../../core/local/shared_prefrences.dart';
-import '../../../../core/services/constants.dart';
 import '../../../../core/utils/color_manager.dart';
 import '../../../../core/utils/navigation_manager.dart';
 import '../bloc/auth_bloc.dart';

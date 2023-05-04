@@ -30,6 +30,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         CameraPosition(zoom: 16, target: LatLng(latitude!, longitude!))));
   }
 
+
   OrderBloc(OrderInitial menuInitial) : super(OrderInitial()) {
     on<OrderEvent>((event, emit) async {
       if (event is GetDataUserEvent) {

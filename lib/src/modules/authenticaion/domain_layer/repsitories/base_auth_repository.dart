@@ -12,6 +12,7 @@ abstract class BaseAuthRepository {
           required String phone,
           required String address,
           required String name});
+
   Future loginWithFaceBook();
   Future registerWithFaceBook();
   Future loginWithGmail();

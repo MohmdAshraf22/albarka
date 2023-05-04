@@ -10,7 +10,6 @@ import '../../../authenticaion/presentation_layer/screens/login.dart';
 import '../../../authenticaion/presentation_layer/screens/update.dart';
 import '../../../menu/presentation_layer/screens/cart_screen.dart';
 import '../../../menu/presentation_layer/screens/menu_screen.dart';
-
 part 'main_event.dart';
 part 'main_state.dart';
 

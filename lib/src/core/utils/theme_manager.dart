@@ -7,7 +7,6 @@ import 'font_manager.dart';
 import 'color_manager.dart';
 import 'font_manager.dart';
 import 'styles_manager.dart';
-
 ThemeData getAppTheme() {
   return ThemeData(
       textButtonTheme: TextButtonThemeData( ),

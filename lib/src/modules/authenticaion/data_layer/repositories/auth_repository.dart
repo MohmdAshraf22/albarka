@@ -23,7 +23,6 @@ class AuthRepository extends BaseAuthRepository {
     //TODO: implement loginWithFaceBook
     throw UnimplementedError();
   }
-
   @override
   Future loginWithGmail() {
     // TODO: implement loginWithGmail

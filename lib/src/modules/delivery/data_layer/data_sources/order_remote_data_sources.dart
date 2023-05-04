@@ -21,6 +21,7 @@ abstract class BaseOrderRemoteDataSource {
   Future<Either<Exception, LocationModel?>> getLocation();
 }
 
+
 class OrderRemoteDataSource extends BaseOrderRemoteDataSource {
   UserModel? userData;
   LocationModel? locationModel;

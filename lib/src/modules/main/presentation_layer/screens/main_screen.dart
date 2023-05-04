@@ -1,9 +1,7 @@
 import 'package:albaraka/src/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
-
 import '../bloc/main_bloc.dart';
 import '../components/components.dart';
 

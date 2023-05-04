@@ -13,6 +13,7 @@ class Product extends Equatable {
   final double newPrice;
   String? offerDetails;
   int? quantity;
+
   Product(
       {this.image,
       required this.name,

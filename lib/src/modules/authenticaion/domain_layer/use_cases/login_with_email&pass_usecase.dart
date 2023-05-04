@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 import '../repsitories/base_auth_repository.dart';
-
 class LoginWithEmailAndPassUseCase {
   final BaseAuthRepository baseAuthRepository;
 

@@ -1,5 +1,4 @@
 import 'package:get_it/get_it.dart';
-
 import '../../modules/authenticaion/data_layer/data_sources/auth_remote_data_sources.dart';
 import '../../modules/authenticaion/data_layer/repositories/auth_repository.dart';
 import '../../modules/authenticaion/domain_layer/repsitories/base_auth_repository.dart';

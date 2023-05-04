@@ -16,7 +16,7 @@ class MenuScreen extends StatelessWidget {
     int i = 1;
     var bloc = MenuBloc.get(context);
     return DefaultTabController(
-      initialIndex: 0, //optional, starts from 0, select the tab by default
+      initialIndex: 0,
       length: 3,
       child: BlocBuilder<MenuBloc, MenuState>(
         builder: (context, state) {

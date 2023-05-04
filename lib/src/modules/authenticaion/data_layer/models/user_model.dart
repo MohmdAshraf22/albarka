@@ -1,4 +1,3 @@
-
 import '../../domain_layer/entities/user.dart';
 
 class UserModel extends User{

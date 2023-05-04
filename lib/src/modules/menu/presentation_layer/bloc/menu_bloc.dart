@@ -40,6 +40,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
           halaweyat = r;
           emit(GetHalaweyatSuccessfulState(halaweyat));
         });
+
       } else if (event is GetKosharyEvent) {
         emit(const GetKosharyLoadingState());
         final result = await GetKosharyUseCase(sl()).get();

@@ -8,6 +8,7 @@ class GetDataUserEvent extends OrderEvent{
   @override
   List<Object?> get props => [];
 }
+
 class AddOrderEvent extends OrderEvent {
   final List<String> productDetails;
   final String address;

@@ -8,7 +8,6 @@ import '../models/product_model.dart';
 class MenuRepository extends BaseMenuRepository{
   final BaseMenuRemoteDataSource baseMenuRemoteDataSource;
   MenuRepository(this.baseMenuRemoteDataSource);
-
   @override
   Future<Either<FirebaseException,  List<ProductModel>>> getKoshary()async {
     return await baseMenuRemoteDataSource.getKoshary();

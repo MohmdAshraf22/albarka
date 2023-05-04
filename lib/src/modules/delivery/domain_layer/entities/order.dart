@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 class Order extends Equatable {
   final List<String> productDetails;
   final String address;

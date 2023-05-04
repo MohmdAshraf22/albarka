@@ -182,6 +182,7 @@ class DeliveryScreen extends StatelessWidget {
                                                           20.sp,
                                                         ),
                                                       ),
+
                                                       width: double.infinity,
                                                       child: MaterialButton(
                                                         onPressed: () {
